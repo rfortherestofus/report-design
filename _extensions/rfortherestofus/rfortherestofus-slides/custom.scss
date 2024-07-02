@@ -1,0 +1,369 @@
+/*-- scss:defaults --*/
+
+@import url("https://rsms.me/inter/inter.css");
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+// fonts
+$font-family-sans-serif: "Inter";
+
+
+// main colors
+$body-bg: #fff !default;
+$body-bg-orange: #ff7400 !default;
+$body-color: #404e6b !default;
+$code-color: #404e6b !default;
+$body-blue: #6cabdd;
+$link-color: #6cabdd;
+
+// body
+$presentation-font-size-root: 44px !default;
+$presentation-line-height: 1.15 !default;
+
+// headings
+$presentation-h1-font-size: 80px !default;
+$presentation-h2-font-size: 64px !default;
+$presentation-h3-font-size: 48px !default;
+$middle-h1-font-size: 95px !default;
+$title-h1-font-size: 100px !default;
+$presentation-heading-line-height: 1 !default;
+
+// code blocks
+$code-block-bg: #F3F4F6;
+$code-block-font-size: .4em;
+
+/*-- scss:mixins --*/
+
+// --------------------- //
+@mixin bodyBackground() {
+  background-image: url("https://raw.githubusercontent.com/rfortherestofus/rfortherestofus-slides/main/assets/rru-hex-bg-gradient-light.svg");
+  background-size: cover;
+  background-color: $body-bg;
+}
+
+/*-- scss:rules --*/
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-weight: 700;
+  margin-bottom: 24px;
+  // transform: rotate(-1deg);
+}
+
+// title slide
+h1.title {
+  color: $body-bg;
+  font-size: $title-h1-font-size;
+  letter-spacing: -2px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+h2.title,
+h3.title {
+  font-size: $presentation-h2-font-size;
+  font-weight: 400;
+  line-height: 1;
+}
+
+// inverse slides
+.inverse {
+  color: $body-bg;
+
+  .slide-background-content {
+    background-color: $body-color;
+    background-image: url("https://raw.githubusercontent.com/rfortherestofus/rfortherestofus-slides/main/assets/rru-hex-bg-gradient-dark.svg");
+  }
+
+  h1,
+  h2,
+  h1 > code {
+    color: $body-bg;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-align: center;
+    font-size: $title-h1-font-size;
+  }
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1,
+.reveal[data-navigation-mode="linear"] .title-slide h2,
+.reveal[data-navigation-mode="linear"] .title-slide h3,
+.reveal[data-navigation-mode="linear"] .title-slide h4,
+.reveal[data-navigation-mode="linear"] .title-slide h5,
+.reveal[data-navigation-mode="linear"] .title-slide h6 {
+  font-size: 100px;
+}
+
+
+// slide backgrounds
+.has-bg-image {
+  color: $body-color;
+  
+
+  .slide-background-content {
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
+    background-color: $body-color;
+    background-image: none;
+  }
+
+  h1,
+  h2,
+  h1 > code {
+    color: $body-bg;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-align: center;
+    font-size: $title-h1-font-size;
+  }
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1,
+.reveal[data-navigation-mode="linear"] .title-slide h2,
+.reveal[data-navigation-mode="linear"] .title-slide h3,
+.reveal[data-navigation-mode="linear"] .title-slide h4,
+.reveal[data-navigation-mode="linear"] .title-slide h5,
+.reveal[data-navigation-mode="linear"] .title-slide h6 {
+  font-size: 100px;
+}
+
+// my turn slides
+.my-turn {
+  color: $body-bg;
+
+  .slide-background-content {
+    background-color: $body-bg-orange;
+    background-image: url("https://raw.githubusercontent.com/rfortherestofus/rfortherestofus-slides/main/assets/rru-hex-bg-gradient-light.svg");
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: $body-bg;
+  }
+  
+   a,
+  a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+
+  ul {
+    margin-left: 0.3em;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  code {
+    color: #ffffff;
+  }
+  
+}
+
+// your turn slides
+.your-turn {
+  color: $body-bg;
+
+  .slide-background-content {
+    background-color: $body-blue;
+    background-image: url("https://raw.githubusercontent.com/rfortherestofus/rfortherestofus-slides/main/assets/rru-hex-bg-gradient-white.svg");
+  }
+
+  h1,
+  h2 {
+    color: $body-bg;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  a,
+  a:hover,
+  p > a,
+  li > a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+
+  ul {
+    margin-left: 0.3em;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  code, blockquote>p {
+    color: #ffffff;
+  }
+  
+  
+
+
+}
+
+// custom rules
+.xl {
+  font-size: 200%;
+}
+
+.large {
+  font-size: 130%;
+}
+
+.small {
+  font-size: 70%;
+}
+
+.small code {
+  font-size: .4em;
+}
+
+a,
+a > code,
+.reveal a {
+  color: #6cabdd;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.error-text {
+  color: #ff0000;
+}
+
+.hljs-github .hljs-string,
+.hljs-github .hljs-doctag {
+  color: #19751e;
+}
+
+.reveal p,
+.reveal li {
+  font-weight: 300;
+}
+
+.reveal li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
+.center-slide {
+    text-align: center;
+}
+
+.reveal .slide blockquote {
+  border-left: $body-color 3px solid;
+  font-style: italic;
+  color: $body-color;
+  margin-bottom: 1em;
+}
+
+.reveal .slide blockquote li {
+  color: white;
+}
+
+#your-turn-continued-5 > div > blockquote  {
+  border-left: #ffffff 3px solid; 
+    font-style: italic;
+    color: #ffffff;
+    margin-bottom: 1em;
+}
+
+.pagedtable-footer {
+  font-size: 20px;
+}
+
+.reveal .slides section .fragment.visible {
+    margin-top: 0.5em;
+}
+
+img {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  padding: 0.15rem;
+}
+
+.rainbow {
+		animation: rainbow 2.5s linear;
+		animation-iteration-count: infinite;
+		font-size: 75px;
+}
+
+@keyframes rainbow{
+		100%,0%{
+			color: rgb(255,0,0);
+		}
+		8%{
+			color: rgb(255,127,0);
+		}
+		16%{
+			color: rgb(255,255,0);
+		}
+		25%{
+			color: rgb(127,255,0);
+		}
+		33%{
+			color: rgb(0,255,0);
+		}
+		41%{
+			color: rgb(0,255,127);
+		}
+		50%{
+			color: rgb(0,255,255);
+		}
+		58%{
+			color: rgb(0,127,255);
+		}
+		66%{
+			color: rgb(0,0,255);
+		}
+		75%{
+			color: rgb(127,0,255);
+		}
+		83%{
+			color: rgb(255,0,255);
+		}
+		91%{
+			color: rgb(255,0,127);
+		}
+}
+
+.giant-text {
+  font-size: 150px;
+}
+
+.shadow-text {
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.1)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.2));
+  font-size: 75px;
+}
+
+.outline-text {
+  -webkit-text-stroke: 3px red;
+  font-size: 75px;
+  color: #ffffff;
+}
+
+.opacity-text {
+  font-size: 75px;
+  opacity: 0.1;
+}
+
+.center-slide {
+    text-align: center;
+}

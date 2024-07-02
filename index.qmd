@@ -1,0 +1,100 @@
+---
+title: "Report Design in R: Small Tweaks that Make a Big Difference"
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: false
+    slide-number: true
+    show-slide-number: print
+    center: true
+    incremental: true
+    auto-animate: true
+execute: 
+  message: false
+  warning: false
+  cache: false
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+---
+
+# {background-image="assets/david-kid.jpg" .inverse}
+
+::: {.notes}
+- TODO: replace with photo just of me
+- Talk about how it was making multiple reports
+:::
+
+# {background-image="assets/david-disheviled.jpg" .inverse}
+
+
+::: {.notes}
+- Add image of me as a kid before making reports
+- Add image of looking disheviled after trying to do reports in Excel/Word
+- Add image of me looking better after doing reports in R
+:::
+
+---
+
+1. You make shitty-looking reports
+
+1. You work with a designer to make good-looking reports
+
+::: {.notes}
+But the second option isn't reproducible
+:::
+
+---
+
+There is a third option:
+
+. . .
+
+Make beautiful reports in R
+
+---
+
+
+![](assets/psc-overview.png)
+
+---
+
+![](assets/ia2030-overview.png)
+
+---
+
+![](assets/cwp-overview.png)
+
+# {background-image="assets/david-wedding.jpg" .inverse}
+
+# Does Design Matter? {.inverse}
+
+::: {.notes}
+- Talk about how some devs don't think it matters at all
+- But good design is easy to comprehend
+- Good design builds trust
+- Add quote from Will Chase
+:::
+
+# Good Design is About Being Consistent {background-image="assets/consistent.jpg" .inverse}
+
+::: {.notes}
+- And R users are good at being consistent
+:::
+
+# Good Design is Just a Few Small Tweaks {background-image="assets/tweaks.jpg" .inverse}
+
+## `typst`
+
+## Colors
+
+## Text
+
+## Plots
+
+## Additional Design Elements
+
+## Alignment
+
+# Conclusion
+
