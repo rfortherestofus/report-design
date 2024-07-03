@@ -18,6 +18,8 @@ title-slide-attributes:
   data-background-size: cover
 ---
 
+
+
 # {background-image="assets/david-kid.jpg" .inverse}
 
 ::: {.notes}
