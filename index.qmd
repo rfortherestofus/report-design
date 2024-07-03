@@ -73,7 +73,7 @@ Make beautiful reports in R
 
 ::: {.notes}
 - Talk about how some devs don't think it matters at all
-- But good design is easy to comprehend
+- But good design is easy to comprehend: show examples of good and bad data viz
 - Good design builds trust
 - Add quote from Will Chase
 :::
