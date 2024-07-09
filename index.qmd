@@ -6,9 +6,10 @@ format:
     progress: false
     slide-number: true
     show-slide-number: print
-    center: true
     incremental: true
+    center: true
     auto-animate: true
+    transition: fade
 execute: 
   message: false
   warning: false
@@ -17,8 +18,6 @@ title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
 ---
-
-
 
 # {background-image="assets/david-kid.jpg" .inverse}
 
@@ -38,9 +37,23 @@ title-slide-attributes:
 
 ---
 
-1. You make shitty-looking reports
+Some slide that shows transition of me moving to R
 
-1. You work with a designer to make good-looking reports
+# {background-image="assets/road-split.jpg" .inverse}
+
+---
+
+## Make ugly reports {background-image="assets/road-split-left.jpg" .inverse}
+
+---
+
+::: {.center}
+![](assets/quarto-default-pdf.png)
+:::
+
+---
+
+## Work with a designer {background-image="assets/road-split-right.jpg" .inverse}
 
 ::: {.notes}
 But the second option isn't reproducible
@@ -48,55 +61,94 @@ But the second option isn't reproducible
 
 ---
 
-There is a third option:
+## Make beautiful reports in R {background-image="assets/road-split-middle.jpg" .inverse}
 
 . . .
 
-Make beautiful reports in R
-
----
 
 
-![](assets/psc-overview.png)
+# {background-image="assets/psc-sample-hartford-first-two-pages.png" background-size="contain"}
 
----
+# {background-image="assets/psc-sample-hartford-second-two-pages.png" background-size="contain"}
 
-![](assets/ia2030-overview.png)
-
----
-
-![](assets/cwp-overview.png)
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
-# Does Design Matter? {.inverse}
+# Does Design Matter?
 
 ::: {.notes}
 - Talk about how some devs don't think it matters at all
-- But good design is easy to comprehend: show examples of good and bad data viz
-- Good design builds trust
-- Add quote from Will Chase
+- "I'm David and I think design matters because here's what you can do with it"
 :::
 
-# Good Design is About Being Consistent {background-image="assets/consistent.jpg" .inverse}
+## Aesthetic Usability Effect {.center}
+
+. . .
+
+Users see aesthetically pleasing designs as more intuitive
+
+## Good Design Builds Trust
+
+Putting effort into your charts shows respect for your audience
+
+---
+
+## Good Design Builds Trust
+
+Putting effort into your charts shows respect for your audience, **which means that they in turn are going to respect you and your findings**.
+
+
+## R Users Are Not Designers 
+
+## {background-image="assets/duh.gif" .inverse}
 
 ::: {.notes}
-- And R users are good at being consistent
+But design is a skill that can be taught and R users already have many of the skills needed to do good design
 :::
 
-# Good Design is Just a Few Small Tweaks {background-image="assets/tweaks.jpg" .inverse}
-
-## `typst`
-
-## Colors
-
-## Text
+# Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse}
 
 ## Plots
 
+- Make functions to keep them consistent
+
 ## Additional Design Elements
 
+- e.g. big numbers in Sustain East Africa template
+
+## Colors
+
+- Use brand colors
+
+- Use same colors in plots and tables and in text
+
+- Use colors consistently (e.g. red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)
+
+- Use colors to define sections (PSC)
+
+## Text
+
+- Choose one font or maybe two fonts and stick with them
+
+- Use fonts in plots and text
+
+- Create visual hierarchy with headings
+
+## {background-image="assets/who-runs-the-world.gif" .inverse}
+
+## PDFs (sorry) {background-image="assets/who-runs-the-world.gif" .inverse}
+
+---
+
+## Yeah, I'm Gonna Need That in a PDF {background-image="assets/office-space.jpg" .inverse}
+
+## `typst`
+
 ## Alignment
+
+- Use Quarto columns
+
+- Show PSC as example
 
 # Conclusion
 
