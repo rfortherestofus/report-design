@@ -484,29 +484,84 @@
 </section>
 <section id="colors" class="slide level2 center">
 <h2>Colors</h2>
+<aside class="notes">
+<p>In this section, just show report, don’t do any code</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<h3 id="use-brand-colors">Use brand colors</h3>
 <ul>
-<li class="fragment"><p>Use brand colors</p></li>
-<li class="fragment"><p>Use same colors in plots and tables and in text</p></li>
-<li class="fragment"><p>Use colors to define sections (PSC)</p></li>
+<li class="fragment">Show how to use color picker</li>
 </ul>
+<h3 id="use-same-colors-in-plots-and-tables-and-in-text">Use same colors in plots and tables and in text</h3>
+<h3 id="make-palette-with-monochromer-package">Make palette with <code>monochromeR</code> package</h3>
+<h3 id="use-colors-consistently-e.g.-red-town-pink-county-gray-state-httpsshow.rfor.usxb40stb9">Use colors consistently (e.g.&nbsp;red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)</h3>
+<ul>
+<li class="fragment">Make <code>scale_color_psc()</code> starting with <code>scale_color_manual()</code></li>
+</ul>
+<p>https://show.rfor.us/ycg8TXjG</p>
 </section>
 <section id="text" class="slide level2 center">
 <h2>Text</h2>
+<h3 id="choose-one-font-or-maybe-two-fonts-and-stick-with-them">Choose one font or maybe two fonts and stick with them</h3>
+<h3 id="my-favorite-fonts">My favorite fonts</h3>
+<p><strong>Serif</strong></p>
 <ul>
-<li class="fragment"><p>Choose one font or maybe two fonts and stick with them</p></li>
-<li class="fragment"><p>Create visual hierarchy with headings</p></li>
+<li class="fragment">Inter</li>
+<li class="fragment">Roboto</li>
+<li class="fragment">Public Sans</li>
+<li class="fragment">Geist Sans</li>
+<li class="fragment">Overpass</li>
+<li class="fragment">Instrument Sans</li>
+<li class="fragment">Inclusive Sans</li>
 </ul>
+<p><strong>Sans Serif</strong></p>
+<ul>
+<li class="fragment">Instrument Serif</li>
+</ul>
+<p><strong>Monospace</strong></p>
+<ul>
+<li class="fragment"><p>Geist Mono</p></li>
+<li class="fragment"><p>IBM Plex Mono</p></li>
+<li class="fragment"><p>Ubuntu Mono</p></li>
+<li class="fragment"><p>Overpass Mono</p></li>
+<li class="fragment"><p>Roboto Mono</p></li>
+<li class="fragment"><p>Use fonts that have whole families</p></li>
+</ul>
+<h3 id="use-fonts-in-plots-and-tables">Use fonts in plots and tables</h3>
+<h4 id="maybe-use-monospaced-font-in-tables">Maybe use monospaced font in tables</h4>
 </section>
 <section id="plots" class="slide level2 center">
 <h2>Plots</h2>
 <ul>
-<li class="fragment">Make functions to keep them consistent</li>
+<li class="fragment"><p>Make functions to keep them consistent</p></li>
+<li class="fragment"><p>Use fonts in theme</p></li>
+<li class="fragment"><p>Use <code>set_geom_defaults()</code> to make all <code>geom_text()</code> elements use same font</p></li>
+<li class="fragment"><p>Show dot plot</p></li>
+<li class="fragment"><p>Show age of units and units by age and fuel type</p></li>
 </ul>
 </section>
 <section id="additional-design-elements" class="slide level2 center">
 <h2>Additional Design Elements</h2>
 <ul>
-<li class="fragment">e.g.&nbsp;big numbers in Sustain East Africa template</li>
+<li class="fragment"><p>Big numbers</p></li>
+<li class="fragment"><p>TODO: figure out whether to do this in ggplot or use HTML/CSS/typst or remove this?</p></li>
+</ul>
+</section>
+<section id="tables" class="slide level2 center">
+<h2>Tables</h2>
+<ul>
+<li class="fragment"><p>Make table function</p></li>
+<li class="fragment"><p>Show it without colors, then with colors</p></li>
+<li class="fragment"><p>Show it without brand font, then with brand font</p></li>
 </ul>
 </section>
 <section id="section-7" class="slide level2 inverse center" data-background-image="assets/who-runs-the-world.gif">
@@ -515,17 +570,21 @@
 <section id="pdfs-sorry" class="slide level2 inverse center" data-background-image="assets/who-runs-the-world.gif">
 <h2>PDFs (sorry)</h2>
 </section>
-<section id="yeah-im-gonna-need-that-in-a-pdf" class="slide level2 inverse center" data-background-image="assets/office-space.jpg">
-<h2>Yeah, I’m Gonna Need That in a PDF</h2>
-</section>
 <section id="typst" class="slide level2 center">
 <h2><code>typst</code></h2>
-</section>
-<section id="alignment" class="slide level2 center">
-<h2>Alignment</h2>
+<h3 id="color">Color</h3>
 <ul>
+<li class="fragment">Apply brand colors to template for sections</li>
+</ul>
+<h3 id="fonts">Fonts</h3>
+<ul>
+<li class="fragment">Apply brand fonts to template</li>
+</ul>
+<h3 id="alignment">Alignment</h3>
+<ul>
+<li class="fragment"><p>Use patchwork</p></li>
 <li class="fragment"><p>Use Quarto columns</p></li>
-<li class="fragment"><p>Show PSC as example</p></li>
+<li class="fragment"><p>Use typst columns</p></li>
 </ul>
 </section></section>
 <section id="conclusion" class="title-slide slide level1 center">

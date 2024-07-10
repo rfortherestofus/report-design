@@ -108,47 +108,107 @@ But design is a skill that can be taught and R users already have many of the sk
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse}
 
+## Colors
+
+::: {.notes}
+In this section, just show report, don't do any code
+:::
+
+### Use brand colors
+
+- Show how to use color picker
+
+### Use same colors in plots and tables and in text
+
+### Make palette with `monochromeR` package
+
+### Use colors consistently (e.g. red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)
+
+- Make `scale_color_psc()` starting with `scale_color_manual()`
+
+https://show.rfor.us/ycg8TXjG
+
+## Text
+
+### Choose one font or maybe two fonts and stick with them
+
+### My favorite fonts
+
+**Serif**
+
+- Inter
+- Roboto
+- Public Sans
+- Geist Sans
+- Overpass
+- Instrument Sans
+- Inclusive Sans
+
+**Sans Serif**
+
+- Instrument Serif
+
+**Monospace**
+
+- Geist Mono
+- IBM Plex Mono
+- Ubuntu Mono
+- Overpass Mono
+- Roboto Mono
+
+- Use fonts that have whole families
+
+### Use fonts in plots and tables
+
+#### Maybe use monospaced font in tables
+
 ## Plots
 
 - Make functions to keep them consistent
 
+- Use fonts in theme
+
+- Use `set_geom_defaults()` to make all `geom_text()` elements use same font
+
+- Show dot plot
+
+- Show age of units and units by age and fuel type
+
 ## Additional Design Elements
 
-- e.g. big numbers in Sustain East Africa template
+- Big numbers
 
-## Colors
+- TODO: figure out whether to do this in ggplot or use HTML/CSS/typst or remove this?
 
-- Use brand colors
+## Tables
 
-- Use same colors in plots and tables and in text
+- Make table function
 
-- Use colors consistently (e.g. red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)
+- Show it without colors, then with colors
 
-- Use colors to define sections (PSC)
-
-## Text
-
-- Choose one font or maybe two fonts and stick with them
-
-- Use fonts in plots and text
-
-- Create visual hierarchy with headings
+- Show it without brand font, then with brand font
 
 ## {background-image="assets/who-runs-the-world.gif" .inverse}
 
 ## PDFs (sorry) {background-image="assets/who-runs-the-world.gif" .inverse}
 
----
-
-## Yeah, I'm Gonna Need That in a PDF {background-image="assets/office-space.jpg" .inverse}
-
 ## `typst`
 
-## Alignment
+### Color
+
+- Apply brand colors to template for sections
+
+### Fonts
+
+- Apply brand fonts to template
+
+### Alignment
+
+- Use patchwork
 
 - Use Quarto columns
 
-- Show PSC as example
+- Use typst columns
 
 # Conclusion
 
