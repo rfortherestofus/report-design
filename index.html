@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -372,7 +437,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level2 center">
+<section class="slide level2">
 
 <p>Some slide that shows transition of me moving to R</p>
 </section></section>
@@ -381,16 +446,16 @@
 <h1></h1>
 
 </section>
-<section id="make-ugly-reports" class="slide level2 inverse center" data-background-image="assets/road-split-left.jpg">
+<section id="make-ugly-reports" class="slide level2 inverse" data-background-image="assets/road-split-left.jpg">
 <h2>Make ugly reports</h2>
 </section>
-<section class="slide level2 center">
+<section class="slide level2">
 
 <div class="center">
 <p><img data-src="assets/quarto-default-pdf.png"></p>
 </div>
 </section>
-<section id="work-with-a-designer" class="slide level2 inverse center" data-background-image="assets/road-split-right.jpg">
+<section id="work-with-a-designer" class="slide level2 inverse" data-background-image="assets/road-split-right.jpg">
 <h2>Work with a designer</h2>
 <aside class="notes">
 <p>But the second option isn’t reproducible</p>
@@ -406,15 +471,28 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="make-beautiful-reports-in-r" class="slide level2 inverse center" data-background-image="assets/road-split-middle.jpg">
+<section id="make-beautiful-reports-in-r" class="slide level2 inverse" data-background-image="assets/road-split-middle.jpg">
 <h2>Make beautiful reports in R</h2>
+<aside class="notes">
+<p>TODO: Make this not centered vertically (use disable-layout)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
-<section id="section-3" class="title-slide slide level1 center" data-background-image="assets/psc-sample-hartford-first-two-pages.png" data-background-size="contain">
+<section id="section-3" class="title-slide slide level1 center" data-background-image="assets/psc-sample-Andover-first-two-pages.png" data-background-size="contain">
 <h1></h1>
 
 </section>
 
-<section id="section-4" class="title-slide slide level1 center" data-background-image="assets/psc-sample-hartford-second-two-pages.png" data-background-size="contain">
+<section id="section-4" class="title-slide slide level1 center" data-background-image="assets/psc-sample-Andover-second-two-pages.png" data-background-size="contain">
 <h1></h1>
 
 </section>
@@ -450,18 +528,18 @@
 <p>Users see aesthetically pleasing designs as more intuitive</p>
 </div>
 </section>
-<section id="good-design-builds-trust" class="slide level2 center">
+<section id="good-design-builds-trust" class="slide level2">
 <h2>Good Design Builds Trust</h2>
 <p>Putting effort into your charts shows respect for your audience</p>
 </section>
-<section id="good-design-builds-trust-1" class="slide level2 center">
+<section id="good-design-builds-trust-1" class="slide level2">
 <h2>Good Design Builds Trust</h2>
 <p>Putting effort into your charts shows respect for your audience, <strong>which means that they in turn are going to respect you and your findings</strong>.</p>
 </section>
-<section id="r-users-are-not-designers" class="slide level2 center">
+<section id="r-users-are-not-designers" class="slide level2">
 <h2>R Users Are Not Designers</h2>
 </section>
-<section id="section-6" class="slide level2 inverse center" data-background-image="assets/duh.gif">
+<section id="section-6" class="slide level2 inverse" data-background-image="assets/duh.gif">
 <h2></h2>
 <aside class="notes">
 <p>But design is a skill that can be taught and R users already have many of the skills needed to do good design</p>
@@ -480,9 +558,246 @@
 <section>
 <section id="good-design-is-just-a-few-small-tweaks" class="title-slide slide level1 inverse center" data-background-image="assets/tweaks2.jpg">
 <h1>Good Design is Just a Few Small Tweaks</h1>
+<ul>
+<li class="fragment">Tweak plots</li>
+<li class="fragment">Tweak colors</li>
+<li class="fragment">Tweak text</li>
+<li class="fragment">Make colors and text consistent in plots, tables, and report text</li>
+</ul>
+</section>
+<section id="plots" class="slide level2">
+<h2>Plots</h2>
+<aside class="notes">
+<ul>
+<li>Make functions to keep them consistent</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+
+
+<img data-src="assets/psc-single-family-homes.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>single_family_homes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 169 × 2
+   location     value
+   &lt;fct&gt;        &lt;dbl&gt;
+ 1 Andover      0.897
+ 2 Ansonia      0.548
+ 3 Ashford      0.850
+ 4 Avon         0.844
+ 5 Barkhamsted  0.956
+ 6 Beacon Falls 0.717
+ 7 Berlin       0.807
+ 8 Bethany      0.958
+ 9 Bethel       0.746
+10 Bethlehem    0.944
+# ℹ 159 more rows</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>comparison_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, town_to_highlight) {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>comparison_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, town_to_highlight) {</span>
+<span id="cb4-2"><a href=""></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href=""></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb4-4"><a href=""></a>      <span class="fu">aes</span>(</span>
+<span id="cb4-5"><a href=""></a>        <span class="at">x =</span> value,</span>
+<span id="cb4-6"><a href=""></a>        <span class="at">y =</span> <span class="dv">1</span></span>
+<span id="cb4-7"><a href=""></a>      )</span>
+<span id="cb4-8"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb4-9"><a href=""></a>    ...</span>
+<span id="cb4-10"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="9-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>comparison_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, town_to_highlight) {</span>
+<span id="cb5-2"><a href=""></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href=""></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb5-4"><a href=""></a>      <span class="fu">aes</span>(</span>
+<span id="cb5-5"><a href=""></a>        <span class="at">x =</span> value,</span>
+<span id="cb5-6"><a href=""></a>        <span class="at">y =</span> <span class="dv">1</span></span>
+<span id="cb5-7"><a href=""></a>      )</span>
+<span id="cb5-8"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb5-9"><a href=""></a>    <span class="co"># Gray lines for all towns</span></span>
+<span id="cb5-10"><a href=""></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb5-11"><a href=""></a>      <span class="at">shape =</span> <span class="dv">124</span>,</span>
+<span id="cb5-12"><a href=""></a>      <span class="at">color =</span> <span class="st">"grey80"</span></span>
+<span id="cb5-13"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb5-14"><a href=""></a>    ...</span>
+<span id="cb5-15"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="14-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>comparison_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, town_to_highlight) {</span>
+<span id="cb6-2"><a href=""></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href=""></a>    <span class="fu">ggplot</span>(</span>
+<span id="cb6-4"><a href=""></a>      <span class="fu">aes</span>(</span>
+<span id="cb6-5"><a href=""></a>        <span class="at">x =</span> value,</span>
+<span id="cb6-6"><a href=""></a>        <span class="at">y =</span> <span class="dv">1</span></span>
+<span id="cb6-7"><a href=""></a>      )</span>
+<span id="cb6-8"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb6-9"><a href=""></a>    <span class="co"># Gray lines for all towns</span></span>
+<span id="cb6-10"><a href=""></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb6-11"><a href=""></a>      <span class="at">shape =</span> <span class="dv">124</span>,</span>
+<span id="cb6-12"><a href=""></a>      <span class="at">color =</span> <span class="st">"grey80"</span></span>
+<span id="cb6-13"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb6-14"><a href=""></a>    <span class="co"># Blue line for town to highlight</span></span>
+<span id="cb6-15"><a href=""></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb6-16"><a href=""></a>      <span class="at">data =</span> df <span class="sc">|&gt;</span> <span class="fu">filter</span>(location <span class="sc">==</span> town_to_highlight),</span>
+<span id="cb6-17"><a href=""></a>      <span class="at">shape =</span> <span class="dv">124</span>,</span>
+<span id="cb6-18"><a href=""></a>      <span class="at">color =</span> <span class="st">"blue"</span></span>
+<span id="cb6-19"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb6-20"><a href=""></a>    ...</span>
+<span id="cb6-21"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">comparison_plot</span>(</span>
+<span id="cb7-2"><a href=""></a>  <span class="at">df =</span> single_family_homes,</span>
+<span id="cb7-3"><a href=""></a>  <span class="at">town_to_highlight =</span> <span class="st">"Andover"</span></span>
+<span id="cb7-4"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">scale_x_continuous</span>(</span>
+<span id="cb8-2"><a href=""></a>  <span class="at">labels =</span> <span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)</span>
+<span id="cb8-3"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>comparison_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, town_to_highlight, value_type) {</span>
+<span id="cb9-2"><a href=""></a>  plot <span class="ot">&lt;-</span></span>
+<span id="cb9-3"><a href=""></a>    df <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href=""></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a href=""></a>    ...</span>
+<span id="cb9-6"><a href=""></a></span>
+<span id="cb9-7"><a href=""></a>  <span class="cf">if</span> (value_type <span class="sc">==</span> <span class="st">"percent"</span>) {</span>
+<span id="cb9-8"><a href=""></a>    final_plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb9-9"><a href=""></a>      <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb9-10"><a href=""></a>        <span class="at">labels =</span> <span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)</span>
+<span id="cb9-11"><a href=""></a>      )</span>
+<span id="cb9-12"><a href=""></a>  }</span>
+<span id="cb9-13"><a href=""></a></span>
+<span id="cb9-14"><a href=""></a>  <span class="cf">if</span> (value_type <span class="sc">==</span> <span class="st">"number"</span>) {</span>
+<span id="cb9-15"><a href=""></a>    final_plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb9-16"><a href=""></a>      <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb9-17"><a href=""></a>        <span class="at">labels =</span> <span class="fu">comma_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)</span>
+<span id="cb9-18"><a href=""></a>      )</span>
+<span id="cb9-19"><a href=""></a>  }</span>
+<span id="cb9-20"><a href=""></a></span>
+<span id="cb9-21"><a href=""></a>  final_plot</span>
+<span id="cb9-22"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
 
 </section>
-<section id="colors" class="slide level2 center">
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">comparison_plot</span>(</span>
+<span id="cb10-2"><a href=""></a>  <span class="at">df =</span> single_family_homes,</span>
+<span id="cb10-3"><a href=""></a>  <span class="at">town_to_highlight =</span> <span class="st">"Andover"</span>,</span>
+<span id="cb10-4"><a href=""></a>  <span class="at">value_type =</span> <span class="st">"percent"</span></span>
+<span id="cb10-5"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>total_population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 169 × 2
+   location     value
+   &lt;fct&gt;        &lt;dbl&gt;
+ 1 Andover       3178
+ 2 Ansonia      18709
+ 3 Ashford       4233
+ 4 Avon         18302
+ 5 Barkhamsted   3626
+ 6 Beacon Falls  6185
+ 7 Berlin       20460
+ 8 Bethany       5492
+ 9 Bethel       19822
+10 Bethlehem     3413
+# ℹ 159 more rows</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">comparison_plot</span>(</span>
+<span id="cb13-2"><a href=""></a>  <span class="at">df =</span> total_population,</span>
+<span id="cb13-3"><a href=""></a>  <span class="at">town_to_highlight =</span> <span class="st">"Andover"</span>,</span>
+<span id="cb13-4"><a href=""></a>  <span class="at">value_type =</span> <span class="st">"number"</span></span>
+<span id="cb13-5"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="colors" class="slide level2">
 <h2>Colors</h2>
 <aside class="notes">
 <p>In this section, just show report, don’t do any code</p>
@@ -497,21 +812,56 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section class="slide level2">
+
 <h3 id="use-brand-colors">Use brand colors</h3>
-<ul>
-<li class="fragment">Show how to use color picker</li>
-</ul>
+</section>
+<section class="slide level2">
+
+
+<img data-src="assets/psc-website.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="assets/developer-tools.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="assets/background-color.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>psc_teal <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb14-2"><a href=""></a>psc_orange <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb14-3"><a href=""></a>psc_purple <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb14-4"><a href=""></a>psc_blue <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb14-5"><a href=""></a>psc_green <span class="ot">&lt;-</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="use-same-colors-in-plots-and-tables-and-in-text">Use same colors in plots and tables and in text</h3>
+</section>
+<section class="slide level2">
+
 <h3 id="make-palette-with-monochromer-package">Make palette with <code>monochromeR</code> package</h3>
+</section>
+<section class="slide level2">
+
 <h3 id="use-colors-consistently-e.g.-red-town-pink-county-gray-state-httpsshow.rfor.usxb40stb9">Use colors consistently (e.g.&nbsp;red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)</h3>
 <ul>
 <li class="fragment">Make <code>scale_color_psc()</code> starting with <code>scale_color_manual()</code></li>
 </ul>
 <p>https://show.rfor.us/ycg8TXjG</p>
 </section>
-<section id="text" class="slide level2 center">
+<section id="text" class="slide level2">
 <h2>Text</h2>
 <h3 id="choose-one-font-or-maybe-two-fonts-and-stick-with-them">Choose one font or maybe two fonts and stick with them</h3>
+<ul>
+<li class="fragment"><p>Use fonts in theme</p></li>
+<li class="fragment"><p>Use <code>set_geom_defaults()</code> to make all <code>geom_text()</code> elements use same font</p></li>
+</ul>
 <h3 id="my-favorite-fonts">My favorite fonts</h3>
 <p><strong>Serif</strong></p>
 <ul>
@@ -539,24 +889,14 @@
 <h3 id="use-fonts-in-plots-and-tables">Use fonts in plots and tables</h3>
 <h4 id="maybe-use-monospaced-font-in-tables">Maybe use monospaced font in tables</h4>
 </section>
-<section id="plots" class="slide level2 center">
-<h2>Plots</h2>
-<ul>
-<li class="fragment"><p>Make functions to keep them consistent</p></li>
-<li class="fragment"><p>Use fonts in theme</p></li>
-<li class="fragment"><p>Use <code>set_geom_defaults()</code> to make all <code>geom_text()</code> elements use same font</p></li>
-<li class="fragment"><p>Show dot plot</p></li>
-<li class="fragment"><p>Show age of units and units by age and fuel type</p></li>
-</ul>
-</section>
-<section id="additional-design-elements" class="slide level2 center">
+<section id="additional-design-elements" class="slide level2">
 <h2>Additional Design Elements</h2>
 <ul>
 <li class="fragment"><p>Big numbers</p></li>
 <li class="fragment"><p>TODO: figure out whether to do this in ggplot or use HTML/CSS/typst or remove this?</p></li>
 </ul>
 </section>
-<section id="tables" class="slide level2 center">
+<section id="tables" class="slide level2">
 <h2>Tables</h2>
 <ul>
 <li class="fragment"><p>Make table function</p></li>
@@ -564,13 +904,13 @@
 <li class="fragment"><p>Show it without brand font, then with brand font</p></li>
 </ul>
 </section>
-<section id="section-7" class="slide level2 inverse center" data-background-image="assets/who-runs-the-world.gif">
+<section id="section-7" class="slide level2 inverse" data-background-image="assets/who-runs-the-world.gif">
 <h2></h2>
 </section>
-<section id="pdfs-sorry" class="slide level2 inverse center" data-background-image="assets/who-runs-the-world.gif">
+<section id="pdfs-sorry" class="slide level2 inverse" data-background-image="assets/who-runs-the-world.gif">
 <h2>PDFs (sorry)</h2>
 </section>
-<section id="typst" class="slide level2 center">
+<section id="typst" class="slide level2">
 <h2><code>typst</code></h2>
 <h3 id="color">Color</h3>
 <ul>
@@ -675,7 +1015,7 @@
         disableLayout: false,
 
         // Vertical centering of slides
-        center: true,
+        center: false,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -805,6 +1145,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

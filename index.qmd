@@ -7,7 +7,7 @@ format:
     slide-number: true
     show-slide-number: print
     incremental: true
-    center: true
+    # center: true
     auto-animate: true
     transition: fade
 execute: 
@@ -17,7 +17,14 @@ execute:
 title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r}
+library(tidyverse)
+library(scales)
+```
 
 # {background-image="assets/david-kid.jpg" .inverse}
 
@@ -61,15 +68,21 @@ But the second option isn't reproducible
 
 ---
 
+
 ## Make beautiful reports in R {background-image="assets/road-split-middle.jpg" .inverse}
+
+::: {.notes}
+TODO: Make this not centered vertically (use disable-layout)
+:::
+
 
 . . .
 
 
 
-# {background-image="assets/psc-sample-hartford-first-two-pages.png" background-size="contain"}
+# {background-image="assets/psc-sample-Andover-first-two-pages.png" background-size="contain"}
 
-# {background-image="assets/psc-sample-hartford-second-two-pages.png" background-size="contain"}
+# {background-image="assets/psc-sample-Andover-second-two-pages.png" background-size="contain"}
 
 
 # {background-image="assets/david-wedding.jpg" .inverse}
@@ -108,19 +121,381 @@ But design is a skill that can be taught and R users already have many of the sk
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse}
 
+- Tweak plots
+- Tweak colors
+- Tweak text
+- Make colors and text consistent in plots, tables, and report text
+
+## Plots
+
+::: {.notes}
+- Make functions to keep them consistent
+:::
+
+---
+
+![](assets/psc-single-family-homes.png)
+
+---
+
+
+```{r}
+single_family_homes <-
+  read_rds("data/single_family_homes.rds")
+```
+
+```{r}
+#| echo: true
+single_family_homes
+```
+
+---
+
+```{r}
+comparison_plot <- function(df, town_to_highlight) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "grey90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "grey80",
+      size = 5
+    ) +
+    # scale_x_continuous(
+    #   labels = percent_format(accuracy = 1),
+    #   breaks = seq(0, 1, 0.25)
+    # ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "grey40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == town_to_highlight),
+      shape = 124,
+      color = "blue",
+      size = 10
+    )
+}
+```
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot <- function(df, town_to_highlight) {}
+```
+
+---
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "2-8"
+comparison_plot <- function(df, town_to_highlight) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "9-13"
+comparison_plot <- function(df, town_to_highlight) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    # Gray lines for all towns
+    geom_point(
+      shape = 124,
+      color = "grey80"
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "14-19"
+comparison_plot <- function(df, town_to_highlight) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    # Gray lines for all towns
+    geom_point(
+      shape = 124,
+      color = "grey80"
+    ) +
+    # Blue line for town to highlight
+    geom_point(
+      data = df |> filter(location == town_to_highlight),
+      shape = 124,
+      color = "blue"
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot(
+  df = single_family_homes,
+  town_to_highlight = "Andover"
+)
+```
+
+. . .
+```{r}
+#| fig-height: 2
+comparison_plot(
+  df = single_family_homes,
+  town_to_highlight = "Andover"
+)
+```
+
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+scale_x_continuous(
+  labels = percent_format(accuracy = 1)
+)
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot <- function(df, town_to_highlight, value_type) {
+  plot <-
+    df |>
+    ggplot() +
+    ...
+
+  if (value_type == "percent") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+---
+
+```{r}
+comparison_plot <- function(df, town_to_highlight, value_type) {
+  plot <-
+    df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "grey90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "grey80",
+      size = 5
+    ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "grey40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == town_to_highlight),
+      shape = 124,
+      color = "blue",
+      size = 10
+    )
+
+  if (value_type == "percent") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot(
+  df = single_family_homes,
+  town_to_highlight = "Andover",
+  value_type = "percent"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 2
+comparison_plot(
+  df = single_family_homes,
+  town_to_highlight = "Andover",
+  value_type = "percent"
+)
+```
+
+---
+
+```{r}
+total_population <-
+  read_rds("data/total_population.rds")
+```
+
+```{r}
+#| echo: true
+total_population
+```
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot(
+  df = total_population,
+  town_to_highlight = "Andover",
+  value_type = "number"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 2
+comparison_plot(
+  df = total_population,
+  town_to_highlight = "Andover",
+  value_type = "number"
+)
+```
+
+
+
+
 ## Colors
 
 ::: {.notes}
 In this section, just show report, don't do any code
 :::
 
+---
+
 ### Use brand colors
 
-- Show how to use color picker
+---
+
+![](assets/psc-website.png)
+
+---
+
+![](assets/developer-tools.png)
+
+---
+
+![](assets/background-color.png)
+
+---
+
+```{r}
+#| echo: true
+psc_teal <- ""
+psc_orange <- ""
+psc_purple <- ""
+psc_blue <- ""
+psc_green <- ""
+```
+
+---
 
 ### Use same colors in plots and tables and in text
 
+---
+
 ### Make palette with `monochromeR` package
+
+---
 
 ### Use colors consistently (e.g. red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)
 
@@ -131,6 +506,11 @@ https://show.rfor.us/ycg8TXjG
 ## Text
 
 ### Choose one font or maybe two fonts and stick with them
+
+- Use fonts in theme
+
+- Use `set_geom_defaults()` to make all `geom_text()` elements use same font
+
 
 ### My favorite fonts
 
@@ -162,17 +542,7 @@ https://show.rfor.us/ycg8TXjG
 
 #### Maybe use monospaced font in tables
 
-## Plots
 
-- Make functions to keep them consistent
-
-- Use fonts in theme
-
-- Use `set_geom_defaults()` to make all `geom_text()` elements use same font
-
-- Show dot plot
-
-- Show age of units and units by age and fuel type
 
 ## Additional Design Elements
 
@@ -211,4 +581,3 @@ https://show.rfor.us/ycg8TXjG
 - Use typst columns
 
 # Conclusion
-
