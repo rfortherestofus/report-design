@@ -183,7 +183,7 @@
       grid(
         columns: (80%, 20%),
         align(left, text(size: 20pt, fill: white, weight: "bold", "Housing Data Profiles")),
-        align(right, text(size: 12pt, fill: white, weight: "bold", "Coventry")),
+        align(right, text(size: 12pt, fill: white, weight: "bold", town)),
       ),
     ),
     footer: {
@@ -197,7 +197,7 @@
 
 // format with custom parameters
 #let psc-report(
-  // title: none,
+  title: none,
   body,
 ) = {
   // text default
