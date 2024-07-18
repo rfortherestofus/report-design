@@ -1,0 +1,980 @@
+---
+title: "Report Design in R: Small Tweaks that Make a Big Difference"
+format:
+  rfortherestofus-slides-revealjs:
+    menu: false
+    progress: false
+    slide-number: true
+    show-slide-number: print
+    incremental: true
+    # center: true
+    auto-animate: true
+    transition: fade
+execute: 
+  message: false
+  warning: false
+  cache: false
+title-slide-attributes:
+  data-background-image: assets/rru-hex-bg-gradient-dark.svg
+  data-background-size: cover
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+library(tidyverse)
+library(scales)
+```
+
+# {background-image="assets/david-kid.jpg" .inverse}
+
+::: {.notes}
+- TODO: replace with photo just of me
+- Talk about how it was making multiple reports
+:::
+
+# {background-image="assets/david-disheviled.jpg" .inverse}
+
+
+::: {.notes}
+- Add image of me as a kid before making reports
+- Add image of looking disheviled after trying to do reports in Excel/Word
+- Add image of me looking better after doing reports in R
+:::
+
+---
+
+Some slide that shows transition of me moving to R
+
+# {background-image="assets/road-split.jpg" .inverse}
+
+---
+
+## Make ugly reports {background-image="assets/road-split-left.jpg" .inverse}
+
+---
+
+::: {.center}
+![](assets/quarto-default-pdf.png)
+:::
+
+---
+
+## Work with a designer {background-image="assets/road-split-right.jpg" .inverse}
+
+::: {.notes}
+But the second option isn't reproducible
+:::
+
+---
+
+
+## Make beautiful reports in R {background-image="assets/road-split-middle.jpg" .inverse}
+
+::: {.notes}
+TODO: Make this not centered vertically (use disable-layout)
+TODO: talk about elements you combine to make good reports: data viz, tables, report design with typst
+:::
+
+
+. . .
+
+
+
+# {background-image="assets/psc-sample-Hartford-first-two-pages.png" background-size="contain"}
+
+# {background-image="assets/psc-sample-Hartford-second-two-pages.png" background-size="contain"}
+
+
+# {background-image="assets/david-wedding.jpg" .inverse}
+
+# Does Design Matter? {.inverse}
+
+::: {.notes}
+- Talk about how some devs don't think it matters at all
+- "I'm David and I think design matters because here's what you can do with it"
+:::
+
+## Aesthetic Usability Effect {.center}
+
+. . .
+
+Users see aesthetically pleasing designs as more intuitive
+
+## Good Design Builds Trust {.center}
+
+Putting effort into your charts shows respect for your audience
+
+---
+
+## Good Design Builds Trust {.center}
+
+Putting effort into your charts shows respect for your audience, **which means that they in turn are going to respect you and your findings**.
+
+
+## But I'm Not a Designer! {.inverse .center}
+
+::: {.notes}
+But design is a skill that can be taught and R users already have many of the skills needed to do good design
+:::
+
+# Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse .center}
+
+
+## {background-image="assets/who-runs-the-world.gif" .inverse}
+
+## PDFs (sorry) {background-image="assets/who-runs-the-world.gif" .inverse .center}
+
+## `typst`
+
+### typst overview
+
+- Faster than LaTeX
+- Easier (?) to learn
+
+---
+
+### Overall template
+
+- Set fonts
+- Define headings
+- Header and footer
+
+
+---
+
+### How to pass variables from YAML to typst
+
+```{yaml}
+#| echo: true
+---
+title: "Housing Data Profiles"
+subtitle: "Partnership for Strong Communities"
+
+params:
+  town: "Coventry"
+---
+```
+
+. . .
+
+TODO: Get incremental reveal working
+
+TODO: Get verbatim code chunk working
+
+
+
+```{{markdown}}
+#let title = "{{< meta title >}}"
+#let area =  "{{< meta params.town >}}"
+```
+
+
+
+---
+
+### typst-show.typ
+
+```
+#show: typst-report.with(
+$if(title)$
+  title: "$title$",
+$endif$
+$if(subtitle)$
+  subtitle: "$subtitle$",
+$endif$
+```
+
+
+### Color
+
+- Apply brand colors to template for sections
+
+### Fonts
+
+- Apply brand fonts to template
+
+### Alignment
+
+- Use patchwork
+
+- Use Quarto columns
+
+- Use typst columns
+
+
+
+## Make a ggplot theme {.inverse .center}
+
+::: {.notes}
+TODO: Tell people to do the same with a table template
+:::
+
+---
+
+### ggplot theme
+
+```{r}
+#| echo: true
+#| eval: false
+theme_psc <- function() {
+  theme_void()
+}
+```
+
+
+
+
+## Use Functions to Make Your Plots Consistent {.inverse .center}
+
+
+
+
+# Comparison Plots {.inverse}
+
+
+# {background-image="assets/psc-sample-Hartford-first-two-pages-comparison-plots.png" background-size="contain"}
+
+# {background-image="assets/psc-sample-Hartford-second-two-pages-comparison-plots.png" background-size="contain"}
+
+---
+
+![](assets/comparison-plot-explanation.png)
+
+. . .
+
+![](assets/single-family-homes-plot.png)
+
+. . .
+
+![](assets/total-population-plot.png)
+
+
+---
+
+
+```{r}
+single_family_homes <-
+  read_rds("data/single_family_homes.rds")
+```
+
+```{r}
+#| echo: true
+#| eval: false
+single_family_homes
+```
+
+```{r}
+single_family_homes |>
+  print(n = Inf)
+```
+
+
+---
+
+```{r}
+comparison_plot <- function(df, highlight_town) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "grey90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "grey80",
+      size = 5
+    ) +
+    scale_x_continuous(
+      labels = percent_format(accuracy = 1)
+    ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "grey40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == highlight_town),
+      shape = 124,
+      color = "blue",
+      size = 10
+    )
+}
+```
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot <- function(df, highlight_town) { }
+```
+
+---
+
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "2-8"
+comparison_plot <- function(df, highlight_town) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "9-13"
+comparison_plot <- function(df, highlight_town) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    # Gray lines for all towns
+    geom_point(
+      shape = 124,
+      color = "grey80"
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "14-19"
+comparison_plot <- function(df, highlight_town) {
+  df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    # Gray lines for all towns
+    geom_point(
+      shape = 124,
+      color = "grey80"
+    ) +
+    # Blue line for town to highlight
+    geom_point(
+      data = df |> filter(location == highlight_town),
+      shape = 124,
+      color = "blue"
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 1.5
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford"
+)
+```
+
+
+---
+
+```{r}
+#| fig-height: 1.5
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford"
+)
+```
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "8-10"
+comparison_plot <- function(df, highlight_town) {
+  ggplot(
+    aes(
+      x = value,
+      y = 1
+    )
+  ) +
+    scale_x_continuous(
+      labels = percent_format(accuracy = 1)
+    ) +
+    ...
+}
+```
+
+---
+
+![](assets/total-population-plot.png)
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot <- function(df, highlight_town, value_type) { }
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "2-5"
+comparison_plot <- function(df, highlight_town, value_type) {
+  plot <-
+    df |>
+    ggplot() +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "7-12"
+comparison_plot <- function(df, highlight_town, value_type) {
+  plot <-
+    df |>
+    ggplot() +
+    ...
+
+  if (value_type == "percent") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "14-19"
+comparison_plot <- function(df, highlight_town, value_type) {
+  plot <-
+    df |>
+    ggplot() +
+    ...
+
+  if (value_type == "percent") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "21"
+comparison_plot <- function(df, highlight_town, value_type) {
+  plot <-
+    df |>
+    ggplot() +
+    ...
+
+  if (value_type == "percent") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <- plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+---
+
+```{r}
+comparison_plot <- function(df, highlight_town, value_type) {
+  plot <-
+    df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "grey90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "grey80",
+      size = 5
+    ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "grey40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == highlight_town),
+      shape = 124,
+      color = "blue",
+      size = 10
+    )
+
+  if (value_type == "percent") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  value_type = "percent"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 1.5
+#| code-line-numbers: "4"
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  value_type = "percent"
+)
+```
+
+---
+
+```{r}
+total_population <-
+  read_rds("data/total_population.rds")
+```
+
+```{r}
+#| echo: true
+#| eval: false
+total_population
+```
+
+```{r}
+total_population |>
+  print(n = Inf)
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+comparison_plot(
+  df = total_population,
+  highlight_town = "Hartford",
+  value_type = "number"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 1.5
+comparison_plot(
+  df = total_population,
+  highlight_town = "Hartford",
+  value_type = "number"
+)
+```
+
+
+# Big Numbers {.inverse}
+
+---
+
+```{r}
+total_population <-
+  read_rds("data/total_population.rds")
+```
+
+```{r}
+#| fig-height: 1.5
+total_population |>
+  mutate(value = comma(value)) |>
+  filter(location == "Hartford") |>
+  mutate(variable = "Total Population") |>
+  ggplot() +
+  geom_text(
+    aes(
+      x = 1,
+      y = 1,
+      label = value
+    ),
+    color = "#F08A43",
+    family = "Open Sans",
+    fontface = "bold",
+    size = 20,
+    hjust = 0
+  ) +
+  geom_text(
+    aes(
+      x = 1,
+      y = 2,
+      label = str_to_upper(variable)
+    ),
+    color = "grey70",
+    family = "Open Sans",
+    size = 7,
+    hjust = 0
+  ) +
+  scale_y_continuous(limits = c(0, 2.5)) +
+  theme_void()
+```
+
+## Use Brand Colors {.inverse .center}
+
+::: {.notes}
+In this section, just show report, don't do any code
+:::
+
+
+---
+
+![](assets/psc-website.png)
+
+---
+
+![](assets/developer-tools.png)
+
+---
+
+![](assets/background-color.png)
+
+---
+
+
+
+```{r}
+#| echo: true
+psc_teal <- "#7ECDC4"
+psc_orange <- "#F08A43"
+psc_purple <- "#9C87BF"
+psc_blue <- "#15397F"
+psc_green <- "#346F51"
+```
+
+```{r}
+show_col(
+  c(
+    psc_teal,
+    psc_orange,
+    psc_purple,
+    psc_blue,
+    psc_green
+  ),
+  borders = NA
+)
+```
+
+---
+
+### Use colors in plots
+
+
+
+
+---
+
+### Use same colors in plots and tables and in text
+
+```{r}
+comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
+  plot <-
+    df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "grey90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "grey80",
+      size = 5
+    ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "grey40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == highlight_town),
+      shape = 124,
+      color = highlight_color,
+      size = 10
+    )
+
+  if (value_type == "percent") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+comparison_plot <- function(df, highlight_town, highlight_color, value_type) { }
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "5"
+comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
+  geom_point(
+    data = df |> filter(location == highlight_town),
+    shape = 124,
+    color = highlight_color,
+    size = 10
+  )
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  highlight_color = psc_blue,
+  value_type = "percent"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 1.5
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  highlight_color = psc_blue,
+  value_type = "percent"
+)
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+comparison_plot(
+  df = total_population,
+  highlight_town = "Hartford",
+  highlight_color = psc_orange,
+  value_type = "number"
+)
+```
+
+. . .
+
+```{r}
+#| fig-height: 1.5
+comparison_plot(
+  df = total_population,
+  highlight_town = "Hartford",
+  highlight_color = psc_orange,
+  value_type = "number"
+)
+```
+
+---
+
+### Make palette with `monochromeR` package
+
+---
+
+### Use colors consistently (e.g. red = town, pink = county, gray = state; https://show.rfor.us/XB40stB9)
+
+- Make `scale_color_psc()` starting with `scale_color_manual()`
+
+https://show.rfor.us/ycg8TXjG
+
+## Text
+
+### Choose one font or maybe two fonts and stick with them
+
+- Use fonts in theme
+
+- Use `set_geom_defaults()` to make all `geom_text()` elements use same font
+
+
+### My favorite fonts
+
+**Serif**
+
+- Inter
+- Roboto
+- Public Sans
+- Geist Sans
+- Overpass
+- Instrument Sans
+- Inclusive Sans
+
+**Sans Serif**
+
+- Instrument Serif
+
+**Monospace**
+
+- Geist Mono
+- IBM Plex Mono
+- Ubuntu Mono
+- Overpass Mono
+- Roboto Mono
+
+- Use fonts that have whole families
+
+### Use fonts in plots and tables
+
+#### Maybe use monospaced font in tables
+
+
+
+## Additional Design Elements
+
+- Big numbers
+
+- TODO: figure out whether to do this in ggplot or use HTML/CSS/typst or remove this?
+
+## Tables
+
+- Make table function
+
+- Show it without colors, then with colors
+
+- Show it without brand font, then with brand font
+
+
+# Conclusion
