@@ -7,4 +7,7 @@ $endif$
 $if(subtitle)$
   subtitle: "$subtitle$",
 $endif$
+$if(params.town)$
+  town: "$params.town$",
+$endif$
 )

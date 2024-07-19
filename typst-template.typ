@@ -1,7 +1,18 @@
 
-// --- page layout ---
-
- #set page(
+// format with custom parameters
+#let psc-report(
+  title: none,
+  town : "town",
+  body,
+) = {
+  // --- text default ---
+  set text(
+    font: "Open Sans",
+    size: 11pt,
+  )
+  
+// --- page ---
+ set page(
     "us-letter",
     margin: (left: 1in, right: 1in, top: 0.7in, bottom: 1in),
     background: place(top, rect(fill: rgb("15397F"), width: 100%, height: 0.5in)),
@@ -20,17 +31,6 @@
         align(right, image("psclogo.svg", height: 300%)),
       )
     }
-  )
-
-// format with custom parameters
-#let psc-report(
-  title: none,
-  body,
-) = {
-  // text default
-  set text(
-    font: "Open Sans",
-    size: 11pt,
   )
 
   // --- headings ---

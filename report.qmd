@@ -11,11 +11,6 @@ params:
   town: "Coventry"
 ---
 
-```{=typst}
-#let title = "{{< meta title >}}"
-#let town =  "{{< meta params.town >}}"
-```
-
 # Test
 
 Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do excepteur incididunt aliqua minim irure Lorem officia. Consectetur ad sunt amet est consequat voluptate sint consectetur voluptate. Aute adipisicing laborum magna amet aliquip qui in irure qui ut pariatur veniam proident ex. Sit voluptate ut irure quis excepteur nostrud est laboris. Ut ullamco velit ex laboris occaecat voluptate elit dolore ipsum fugiat est id.
