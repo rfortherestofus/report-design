@@ -64,6 +64,7 @@ Some slide that shows transition of me moving to R
 
 ::: {.notes}
 But the second option isn't reproducible
+TODO: Maybe show OBTN here?
 :::
 
 ---
@@ -119,6 +120,8 @@ But design is a skill that can be taught and R users already have many of the sk
 :::
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse .center}
+
+
 
 
 ## {background-image="assets/who-runs-the-world.gif" .inverse}
