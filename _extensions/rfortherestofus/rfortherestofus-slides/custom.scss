@@ -2,6 +2,8 @@
 
 @import url("https://rsms.me/inter/inter.css");
 
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
 html {
   font-family: "Inter", sans-serif;
 }
@@ -299,6 +301,11 @@ img {
   padding: 0.15rem;
 }
 
+.img-no-shadow img {
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .rainbow {
 		animation: rainbow 2.5s linear;
 		animation-iteration-count: infinite;
@@ -366,4 +373,39 @@ img {
 
 .center-slide {
     text-align: center;
+}
+
+.reveal pre.sourceCode code {
+  /* height: 500px; */
+  max-height: 1000px;
+}
+
+.atkinson-hyperlegible-regular {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.atkinson-hyperlegible-bold {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.instrument-sans-regular {
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.instrument-sans-bold {
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }

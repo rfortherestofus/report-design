@@ -1,0 +1,178 @@
+---
+title: "Housing Data Profiles"
+
+format: 
+  typst:
+    template-partials:
+      - typst-show.typ
+      - typst-template.typ
+
+execute: 
+  warning: false
+  message: false
+  echo: false
+
+params:
+  town: "Hartford"
+---
+
+# Introduction
+
+Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do excepteur incididunt aliqua minim irure Lorem officia. Consectetur ad sunt amet est consequat voluptate sint consectetur voluptate. Aute adipisicing laborum magna amet aliquip qui in irure qui ut pariatur veniam proident ex. Sit voluptate ut irure quis excepteur nostrud est laboris. Ut ullamco velit ex laboris occaecat voluptate elit dolore ipsum fugiat est id.
+
+
+
+```{r}
+library(tidyverse)
+library(scales)
+library(patchwork)
+```
+
+
+```{r}
+single_family_homes <-
+  read_rds("data/single_family_homes.rds")
+
+total_population <-
+  read_rds("data/total_population.rds")
+```
+
+```{r}
+big_number_plot <- function(value, text, value_color) {
+  ggplot() +
+    # Add value
+    geom_text(
+      aes(
+        x = 1,
+        y = 1,
+        label = value
+      ),
+      color = value_color,
+      fontface = "bold",
+      size = 10,
+      hjust = 0
+    ) +
+    # Add text
+    geom_text(
+      aes(
+        x = 1,
+        y = 2,
+        label = str_to_upper(text)
+      ),
+      color = "gray70",
+      size = 4,
+      hjust = 0,
+      lineheight = 1
+    ) +
+    scale_y_continuous(limits = c(0, 2.5)) +
+    theme_void()
+}
+```
+
+```{r}
+comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
+  plot <-
+    df |>
+    ggplot(
+      aes(
+        x = value,
+        y = 1
+      )
+    ) +
+    geom_hline(
+      yintercept = 1,
+      color = "gray90",
+      linewidth = 0.25
+    ) +
+    geom_point(
+      shape = 124,
+      color = "gray80",
+      size = 5
+    ) +
+    expand_limits(
+      x = 0
+    ) +
+    theme_void() +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "gray40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    ) +
+    geom_point(
+      data = df |> filter(location == highlight_town),
+      shape = 124,
+      color = highlight_color,
+      size = 10
+    )
+
+  if (value_type == "percent") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = percent_format(accuracy = 1)
+      )
+  }
+
+  if (value_type == "number") {
+    final_plot <-
+      plot +
+      scale_x_continuous(
+        labels = comma_format(accuracy = 1)
+      )
+  }
+
+  final_plot
+}
+```
+
+```{r}
+theme_psc <- function() {
+  theme_void(base_family = "Open Sans") +
+    theme(
+      axis.text.x = element_text(
+        size = 13,
+        color = "gray40"
+      ),
+      legend.position = "none",
+      plot.margin = margin(rep(20, 4))
+    )
+}
+```
+
+```{r}
+psc_blue <- "#15397F"
+psc_red <- "#9F3515"
+psc_lightblue <- "#8DA4AE"
+```
+
+
+```{r}
+update_geom_defaults(
+  "text",
+  list(
+    family = "Open Sans"
+  )
+)
+```
+
+```{r}
+#| fig-height: 1
+big_number_plot(
+  value = "19%",
+  text = "Single-Family\nHomes",
+  value_color = psc_blue
+)
+```
+
+```{r}
+#| fig-height: 2
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  value_type = "percent",
+  highlight_color = psc_blue
+)
+```
