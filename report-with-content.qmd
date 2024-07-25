@@ -159,27 +159,20 @@ update_geom_defaults(
 ```
 
 ```{r}
-single_family_homes_big_number_plot <-
-  big_number_plot(
-    value = "19%",
-    text = "Single-Family\nHomes",
-    value_color = psc_blue
-  )
+#| fig-height: 1
+big_number_plot(
+  value = "19%",
+  text = "Single-Family\nHomes",
+  value_color = psc_blue
+)
 ```
-
-```{r}
-single_family_homes_comparison_plot <-
-  comparison_plot(
-    df = single_family_homes,
-    highlight_town = "Hartford",
-    value_type = "percent",
-    highlight_color = psc_blue
-  )
-```
-
 
 ```{r}
 #| fig-height: 2
-#| out-width: 6in
-single_family_homes_big_number_plot + single_family_homes_comparison_plot
+comparison_plot(
+  df = single_family_homes,
+  highlight_town = "Hartford",
+  value_type = "percent",
+  highlight_color = psc_blue
+)
 ```

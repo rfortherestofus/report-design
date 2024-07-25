@@ -7,7 +7,7 @@ format:
     slide-number: true
     show-slide-number: print
     incremental: true
-    # center: true
+    center: true
     auto-animate: true
     transition: fade
     code-overflow: wrap
@@ -23,6 +23,7 @@ execute:
   warning: false
   cache: false
   out-width: 100%
+  fig-align: center
 title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
@@ -36,31 +37,25 @@ library(scales)
 library(patchwork)
 ```
 
+# {background-image="assets/ocf-building.jpg" .inverse}
+
 # {background-image="assets/david-kid.jpg" .inverse}
 
 ::: {.notes}
-- TODO: replace with photo just of me
 - Talk about how it was making multiple reports
 :::
 
+# {background-image="assets/ost-programs.png" .inverse}
+
 # {background-image="assets/david-disheviled.jpg" .inverse}
 
-
-::: {.notes}
-- Add image of me as a kid before making reports
-- Add image of looking disheviled after trying to do reports in Excel/Word
-- Add image of me looking better after doing reports in R
-:::
-
----
-
-Some slide that shows transition of me moving to R
+# {background-image="assets/david-hawaii.jpg" .inverse}
 
 # {background-image="assets/road-split.jpg" .inverse}
 
 ---
 
-## Make ugly reports {background-image="assets/road-split-left.jpg" .inverse}
+## Make Ugly Reports {background-image="assets/road-split-left.jpg" .inverse}
 
 ---
 
@@ -70,7 +65,7 @@ Some slide that shows transition of me moving to R
 
 ---
 
-## Work with a designer {background-image="assets/road-split-right.jpg" .inverse}
+## Work With a Designer {background-image="assets/road-split-right.jpg" .inverse}
 
 ::: {.notes}
 But the second option isn't reproducible
@@ -80,10 +75,9 @@ TODO: Maybe show OBTN here?
 ---
 
 
-## Make beautiful reports in R {background-image="assets/road-split-middle.jpg" .inverse}
+## Make Beautiful Reports in R {background-image="assets/road-split-middle.jpg" .inverse}
 
 ::: {.notes}
-TODO: Make this not centered vertically (use disable-layout)
 TODO: talk about elements you combine to make good reports: data viz, tables, report design with typst
 :::
 
@@ -103,6 +97,12 @@ TODO: talk about elements you combine to make good reports: data viz, tables, re
 TODO: Add "results not guaranteed"
 :::
 
+# {background-image="assets/david-wedding.jpg" .inverse}
+
+::: {.absolute top=-200 style="font-size: 24px;"}
+\* Results not guaranteed 
+:::
+
 # Does Design Matter? {.inverse}
 
 ::: {.notes}
@@ -110,7 +110,7 @@ TODO: Add "results not guaranteed"
 - "I'm David and I think design matters because here's what you can do with it"
 :::
 
-## Aesthetic Usability Effect {.center .inverse}
+## Aesthetic Usability Effect {background-image="assets/mountains.jpg" .center .inverse}
 
 ::: {.notes}
 Users see aesthetically pleasing designs as more intuitive
@@ -118,7 +118,7 @@ Users see aesthetically pleasing designs as more intuitive
 
 
 
-## Good Design Builds Trust {.center .inverse}
+## Good Design Builds Trust {background-image="assets/handshake2.jpg" .center .inverse}
 
 ::: {.notes}
 Putting effort into your charts shows respect for your audience, **which means that they in turn are going to respect you and your findings**.
@@ -135,9 +135,11 @@ But design is a skill that can be taught and R users already have many of the sk
 
 ---
 
+## {.center .xl}
+
 1. Don't use defaults
 
-1. Be Consistent
+1. Be consistent
 
 ---
 
@@ -150,38 +152,26 @@ But design is a skill that can be taught and R users already have many of the sk
 
 ---
 
-### Create a Layout
+### Create a Layout {.hidden}
 
 ![](assets/psc-report-layout.png)
 
 ---
 
-### Use Brand Colors
+### Add Brand Colors {.hidden}
 
 ![](assets/psc-report-color.png)
 ---
 
-### Use Brand Fonts
+### Add Brand Fonts {.hidden}
 
 ![](assets/psc-report-font.png)
 ---
 
-### Add Plots
+### Add Plots {.hidden}
 
 ![](assets/psc-report-plots.png)
 
----
-
-![](assets/hartford-housing.png)
-
-::: {.notes}
-- Layout
-- Colors
-- Fonts
-- Plots (also use colors and fonts)
-:::
-
----
 
 # Create a Layout {.inverse}
 
@@ -201,24 +191,85 @@ renderthis::to_png(
 )
 ```
 
-::: {.notes}
-- Apply brand colors to template for sections
+---
 
-- Apply brand fonts to template
+![](assets/typst-report.png){.center}
+
+---
+
+## Identify Brand Colors {.center}
+
+---
+
+## {.center}
+
+![](assets/psc-three-pages.png)
+
+---
+
+## {.center}
+```{r}
+psc_blue <- "#15397F"
+psc_lightblue <- "#8DA4AE"
+psc_red <- "#9F3515"
+```
+
+```{r}
+show_col(
+  c(
+    psc_blue,
+    psc_lightblue,
+    psc_red
+  ),
+  borders = NA
+)
+```
+
+## Identify Brand Fonts {.center}
+
+## Don't Have Brand Fonts? {.center}
+
+---
+
+**Inter**
+
+Whereas disregard and contempt for human rights have resulted
+
+. . .
+
+<br>
+
+:::{.atkinson-hyperlegible-bold}
+**Atkinson Hyperlegible**
 :::
 
+:::{.atkinson-hyperlegible-regular}
+Whereas disregard and contempt for human rights have resulted
+:::
+
+. . .
+
+<br>
+
+:::{.instrument-sans-bold}
+**Instrument Sans**
+:::
+
+:::{.instrument-sans-regular}
+Whereas disregard and contempt for human rights have resulted
+:::
 
 ---
 
-# {background-image="assets/typst-report.png" background-size="contain"}
-
----
+## {.center}
 
 :::{.img-no-shadow}
 ![](assets/typst-workflow.png)
 :::
 
-## `report.qmd`
+## report.qmd
+
+. . .
 
 ```{markdown}
 #| echo: true
@@ -235,30 +286,31 @@ params:
   town: "Hartford"
 ---
 
-# Test
+# Introduction
 
 Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do ...
 ```
 
-## `typst-show.typ`
+## typst-show.typ
+
+. . .
 
 ```{typst}
 #| echo: true
 #| eval: false
 #show: psc-report.with(
-$if(title)$
-  title: "$title$",
-$endif$
-$if(subtitle)$
-  subtitle: "$subtitle$",
-$endif$
-$if(params.town)$
-  town: "$params.town$",
-$endif$
+  $if(title)$
+    title: "$title$",
+  $endif$
+  $if(params.town)$
+    town: "$params.town$",
+  $endif$
 )
 ```
 
-## `typst-template.typ`
+## typst-template.typ
+
+. . .
 
 ```{typst}
 #| echo: true
@@ -414,24 +466,11 @@ footer: align(
 
 ::::
 
-# Plots {.inverse}
+# Use Functions to Make Your Plots Consistent {.inverse .center}
 
+## Comparison Plots
 
-
-
-## Use Functions to Make Your Plots Consistent {.inverse .center}
-
-
-
-
-# Comparison Plots {.inverse}
-
-
-# {background-image="assets/psc-sample-Hartford-first-two-pages-comparison-plots.png" background-size="contain"}
-
-# {background-image="assets/psc-sample-Hartford-second-two-pages-comparison-plots.png" background-size="contain"}
-
----
+. . .
 
 ![](assets/comparison-plot-explanation.png)
 
@@ -923,7 +962,7 @@ comparison_plot(
 ```
 
 
-# Big Numbers {.inverse}
+## Big Numbers
 
 ---
 
@@ -961,7 +1000,7 @@ big_number_plot <- function(value, text) {
       size = 20,
       hjust = 0
     ) +
-    ...
+    theme_void()
 }
 ```
 
@@ -969,7 +1008,7 @@ big_number_plot <- function(value, text) {
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "15-25"
+#| code-line-numbers: "15-24"
 big_number_plot <- function(value, text) {
   ggplot() +
     # Add value
@@ -994,7 +1033,40 @@ big_number_plot <- function(value, text) {
       size = 7,
       hjust = 0
     ) +
-    ...
+    theme_void()
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| code-line-numbers: "25"
+big_number_plot <- function(value, text) {
+  ggplot() +
+    # Add value
+    geom_text(
+      aes(
+        x = 1,
+        y = 1,
+        label = value
+      ),
+      fontface = "bold",
+      size = 20,
+      hjust = 0
+    ) +
+    # Add text
+    geom_text(
+      aes(
+        x = 1,
+        y = 2,
+        label = str_to_upper(text)
+      ),
+      color = "gray70",
+      size = 7,
+      hjust = 0
+    ) +
+    theme_void()
 }
 ```
 
@@ -1059,16 +1131,16 @@ big_number_plot(
 ```{r}
 #| echo: true
 psc_blue <- "#15397F"
-psc_red <- "#9F3515"
 psc_lightblue <- "#8DA4AE"
+psc_red <- "#9F3515"
 ```
 
 ```{r}
 show_col(
   c(
     psc_blue,
-    psc_red,
-    psc_lightblue
+    psc_lightblue,
+    psc_red
   ),
   borders = NA
 )
@@ -1076,7 +1148,7 @@ show_col(
 
 ---
 
-### Use colors in plots
+### Use Colors in Plots
 
 ![](assets/single-family-homes-plot.png)
 
@@ -1261,7 +1333,7 @@ big_number_plot <- function(value, text, value_color) {
       size = 7,
       hjust = 0
     ) +
-    ...
+    theme_void()
 }
 ```
 
@@ -1343,9 +1415,9 @@ big_number_plot(
 )
 ```
 
-# Text
+# Add Fonts to Plots {.inverse}
 
-## Make a ggplot theme {.inverse .center}
+## Make a Custom Theme
 
 ---
 
@@ -1494,18 +1566,6 @@ big_number_plot <- function(value, text) {
 ---
 
 ```{r}
-#| echo: true
-#| eval: false
-big_number_plot(
-  value = "122,549",
-  text = "Total Population",
-  value_color = psc_red
-)
-```
-
-. . .
-
-```{r}
 #| fig-height: 1.75
 big_number_plot(
   value = "122,549",
@@ -1543,51 +1603,15 @@ TODO: Tell people to do the same with a table template
 :::
 
 
-# Combine Plots
-
----
-
-```{r}
-#| echo: true
-single_family_homes_big_number_plot <-
-  big_number_plot(
-    value = "19%",
-    text = "Single-Family\nHomes",
-    value_color = psc_blue
-  )
-```
-
-. . .
-
-```{r}
-#| echo: true
-single_family_homes_comparison_plot <-
-  comparison_plot(
-    df = single_family_homes,
-    highlight_town = "Hartford",
-    value_type = "percent",
-    highlight_color = psc_blue
-  ) +
-  theme_psc()
-```
-
----
-
-```{r}
-#| echo: true
-#| eval: false
-library(patchwork)
-
-single_family_homes_big_number_plot + single_family_homes_comparison_plot
-```
-
-. . .
-
-```{r}
-#| fig-height: 2.5
-single_family_homes_big_number_plot + single_family_homes_comparison_plot
-```
 
 
 
 # Conclusion
+
+1. Don't use defaults
+
+1. Be consistent
+
+::: {.notes}
+TODO: Somehow return to beginning with OCF reports
+:::
