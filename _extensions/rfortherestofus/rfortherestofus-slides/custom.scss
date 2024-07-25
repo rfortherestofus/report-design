@@ -299,6 +299,11 @@ img {
   padding: 0.15rem;
 }
 
+.img-no-shadow img {
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .rainbow {
 		animation: rainbow 2.5s linear;
 		animation-iteration-count: infinite;
@@ -366,4 +371,9 @@ img {
 
 .center-slide {
     text-align: center;
+}
+
+.reveal pre.sourceCode code {
+  /* height: 500px; */
+  max-height: 1000px;
 }

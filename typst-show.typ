@@ -1,5 +1,4 @@
-
-// this pass the parameters from Pandoc to Typst
+// this files pass the parameters from Quarto to Typst
 #show: psc-report.with(
 $if(title)$
   title: "$title$",
