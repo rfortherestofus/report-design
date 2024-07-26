@@ -13,7 +13,6 @@ format:
     code-overflow: wrap
     spotlight:
       presentingCursor: default
-      size: 100
       toggleSpotlightOnMouseDown: false
       spotlightOnKeyPressAndHold: 73
 revealjs-plugins:
@@ -69,18 +68,16 @@ library(patchwork)
 
 ::: {.notes}
 But the second option isn't reproducible
-TODO: Maybe show OBTN here?
 :::
 
 ---
 
 
-## Make Beautiful Reports in R {background-image="assets/road-split-middle.jpg" .inverse}
+## {background-image="assets/road-split-middle.jpg" .inverse}
 
-::: {.notes}
-TODO: talk about elements you combine to make good reports: data viz, tables, report design with typst
+:::{.absolute top=-300 style="text-align: center; font-size: 100px;"}
+**Make Beautiful Reports in R**
 :::
-
 
 . . .
 
@@ -92,10 +89,6 @@ TODO: talk about elements you combine to make good reports: data viz, tables, re
 
 
 # {background-image="assets/david-wedding.jpg" .inverse}
-
-::: {.notes}
-TODO: Add "results not guaranteed"
-:::
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
@@ -197,13 +190,14 @@ renderthis::to_png(
 
 ---
 
-## Identify Brand Colors {.center}
+## Identify Brand Colors {.inverse}
 
 ---
 
 ## {.center}
 
-![](assets/psc-three-pages.png)
+![](assets/psc-website.jpeg)
+
 
 ---
 
@@ -225,7 +219,7 @@ show_col(
 )
 ```
 
-## Identify Brand Fonts {.center}
+## Identify Brand Fonts {.inverse}
 
 ## Don't Have Brand Fonts? {.center}
 
@@ -267,12 +261,17 @@ Whereas disregard and contempt for human rights have resulted
 ![](assets/typst-workflow.png)
 :::
 
+::: {.notes}
+TODO: Make each piece appear individually
+:::
+
 ## report.qmd
 
 . . .
 
 ```{markdown}
 #| echo: true
+#| code-line-numbers: "4-8"
 ---
 title: "Housing Data Profiles"
 
@@ -298,6 +297,39 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do 
 ```{typst}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "1,8"
+#show: psc-report.with(
+  $if(title)$
+    title: "$title$",
+  $endif$
+  $if(params.town)$
+    town: "$params.town$",
+  $endif$
+)
+```
+
+## typst-show.typ
+
+```{typst}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "2-4"
+#show: psc-report.with(
+  $if(title)$
+    title: "$title$",
+  $endif$
+  $if(params.town)$
+    town: "$params.town$",
+  $endif$
+)
+```
+
+## typst-show.typ
+
+```{typst}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "5-7"
 #show: psc-report.with(
   $if(title)$
     title: "$title$",
@@ -315,9 +347,10 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do 
 ```{typst}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "1-3"
 #let psc-report(
   title: "title",
-  town : "town",
+  town: "town",
   body,
 ) = {
 
@@ -327,8 +360,26 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do 
 
  body
 }
+```
 
+## typst-template.typ
 
+```{typst}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4-12"
+#let psc-report(
+  title: "title",
+  town: "town",
+  body,
+) = {
+
+ set text()
+
+ set page()
+
+ body
+}
 ```
 
 
@@ -986,7 +1037,7 @@ big_number_plot <- function(value, text) { }
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "4-13"
+#| code-line-numbers: "3-13"
 big_number_plot <- function(value, text) {
   ggplot() +
     # Add value
@@ -1126,7 +1177,7 @@ big_number_plot(
 
 ---
 
-### Define Colors as Variables
+### Define Brand Colors as Variables
 
 ```{r}
 #| echo: true
@@ -1148,7 +1199,7 @@ show_col(
 
 ---
 
-### Use Colors in Plots
+### Use Brand Colors in Plots
 
 ![](assets/single-family-homes-plot.png)
 
@@ -1374,6 +1425,7 @@ big_number_plot <- function(value, text, value_color) {
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "4"
 big_number_plot(
   value = "19%",
   text = "Single-Family Homes as\nPercent of All Homes",
@@ -1397,6 +1449,7 @@ big_number_plot(
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "4"
 big_number_plot(
   value = "122,549",
   text = "Total Population",
@@ -1415,7 +1468,7 @@ big_number_plot(
 )
 ```
 
-# Add Fonts to Plots {.inverse}
+# Use Brand Fonts in Plots {.inverse}
 
 ## Make a Custom Theme
 
@@ -1509,6 +1562,17 @@ theme_psc <- function() {
 ```
 
 ```{r}
+#| fig-height: 1.75
+big_number_plot(
+  value = "122,549",
+  text = "Total Population",
+  value_color = psc_red
+)
+```
+
+. . .
+
+```{r}
 #| echo: true
 #| eval: false
 big_number_plot(
@@ -1518,6 +1582,8 @@ big_number_plot(
 ) +
   theme_psc()
 ```
+
+. . .
 
 ```{r}
 #| fig-height: 1.75
@@ -1579,10 +1645,8 @@ big_number_plot(
 ```{r}
 #| echo: true
 update_geom_defaults(
-  "text",
-  list(
-    family = "Open Sans"
-  )
+  geom = "text",
+  aes(family = "Open Sans")
 )
 ```
 
@@ -1597,13 +1661,9 @@ big_number_plot(
 )
 ```
 
-
 ::: {.notes}
-TODO: Tell people to do the same with a table template
+Tell people to do the same with a table template
 :::
-
-
-
 
 
 # Conclusion
