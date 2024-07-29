@@ -25,7 +25,7 @@
       grid(
         columns: (40%, 60%),
         align(horizon, text(fill: rgb("15397F"), size: 10pt, counter(page).display("1"))),
-        align(right, image("psclogo.svg", height: 300%)),
+        align(right, image("assets/psclogo.svg", height: 300%)),
       )
     )
   )

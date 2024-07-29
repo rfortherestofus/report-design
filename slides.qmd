@@ -36,6 +36,10 @@ library(scales)
 library(patchwork)
 ```
 
+::: {.notes}
+TODO: Add short URL to slides/report
+:::
+
 # {background-image="assets/ocf-building.jpg" .inverse}
 
 # {background-image="assets/david-kid.jpg" .inverse}
@@ -137,11 +141,6 @@ But design is a skill that can be taught and R users already have many of the sk
 ---
 
 ## What is a Report? {.inverse .center}
-
----
-
-
-![](assets/hartford-housing.png)
 
 ---
 
@@ -509,7 +508,7 @@ footer: align(
           size: 10pt, 
           counter(page).display("1"))),
     align(right, 
-          image("psclogo.svg", 
+          image("assets/psclogo.svg", 
           height: 300%)),
   )
 ```
@@ -951,6 +950,7 @@ comparison_plot <- function(df, highlight_town, value_type) {
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "4"
 comparison_plot(
   df = single_family_homes,
   highlight_town = "Hartford",
@@ -962,7 +962,6 @@ comparison_plot(
 
 ```{r}
 #| fig-height: 1.5
-#| code-line-numbers: "4"
 comparison_plot(
   df = single_family_homes,
   highlight_town = "Hartford",
