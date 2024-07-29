@@ -34,11 +34,10 @@ editor_options:
 library(tidyverse)
 library(scales)
 library(patchwork)
+library(qrcode)
 ```
 
-::: {.notes}
-TODO: Add short URL to slides/report
-:::
+
 
 # {background-image="assets/ocf-building.jpg" .inverse}
 
@@ -62,9 +61,7 @@ TODO: Add short URL to slides/report
 
 ---
 
-::: {.center}
-![](assets/quarto-default-pdf.png)
-:::
+![](assets/quarto-default-pdf.png){height=800px fig-align="center"}
 
 ---
 
@@ -87,16 +84,14 @@ But the second option isn't reproducible
 
 
 
-# {background-image="assets/psc-sample-Hartford-first-two-pages.png" background-size="contain"}
-
-# {background-image="assets/psc-sample-Hartford-second-two-pages.png" background-size="contain"}
+# {background-image="assets/psc-sample-only-two-pages.png" background-size="contain"}
 
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
-::: {.absolute top=-200 style="font-size: 24px;"}
+::: {.absolute top=-200 style="font-size: 48px;"}
 \* Results not guaranteed 
 :::
 
@@ -134,9 +129,9 @@ But design is a skill that can be taught and R users already have many of the sk
 
 ## {.center .xl}
 
-1. Don't use defaults
+1. **Don't**: Use defaults
 
-1. Be consistent
+1. **Do**: Be consistent
 
 ---
 
@@ -146,23 +141,27 @@ But design is a skill that can be taught and R users already have many of the sk
 
 ### Create a Layout {.hidden}
 
-![](assets/psc-report-layout.png)
+
+![](assets/psc-report-layout.png){height=700px fig-align="center"}
 
 ---
 
 ### Add Brand Colors {.hidden}
 
-![](assets/psc-report-color.png)
+
+![](assets/psc-report-color.png){height=700px fig-align="center"}
+
 ---
 
 ### Add Brand Fonts {.hidden}
 
-![](assets/psc-report-font.png)
+![](assets/psc-report-font.png){height=700px fig-align="center"}
+
 ---
 
 ### Add Plots {.hidden}
 
-![](assets/psc-report-plots.png)
+![](assets/psc-report-plots.png){height=700px fig-align="center"}
 
 
 # Create a Layout {.inverse}
@@ -185,7 +184,7 @@ renderthis::to_png(
 
 ---
 
-![](assets/typst-report.png){.center}
+![](assets/typst-report.png){height=700px fig-align="center"}
 
 ---
 
@@ -195,7 +194,7 @@ renderthis::to_png(
 
 ## {.center}
 
-![](assets/psc-website.jpeg)
+![](assets/psc-website.jpeg){height=700px fig-align="center"}
 
 
 ---
@@ -220,7 +219,7 @@ show_col(
 
 ## Identify Brand Fonts {.inverse}
 
-## Don't Have Brand Fonts? {.center}
+## Don't Have Brand Fonts? {.center .center-slide}
 
 ---
 
@@ -257,11 +256,31 @@ Whereas disregard and contempt for human rights have resulted
 ## {.center}
 
 :::{.img-no-shadow}
-![](assets/typst-workflow.png)
+![](assets/typst-workflow-report.png){fig-align="center"}
 :::
 
-::: {.notes}
-TODO: Make each piece appear individually
+---
+
+## {.center}
+
+:::{.img-no-shadow}
+![](assets/typst-workflow-show.png){fig-align="center"}
+:::
+
+---
+
+## {.center}
+
+:::{.img-no-shadow}
+![](assets/typst-workflow-template.png){fig-align="center"}
+:::
+
+---
+
+## {.center}
+
+:::{.img-no-shadow}
+![](assets/typst-workflow.png){fig-align="center"}
 :::
 
 ## report.qmd
@@ -516,7 +535,7 @@ footer: align(
 
 ::::
 
-# Use Functions to Make Your Plots Consistent {.inverse .center}
+# Use Functions to Make Your Plots Consistent {.inverse}
 
 ## Comparison Plots
 
@@ -1014,9 +1033,11 @@ comparison_plot(
 
 ## Big Numbers
 
----
+. . .
 
 ![](assets/single-family-homes-plot.png)
+
+. . .
 
 ![](assets/total-population-plot.png)
 
@@ -1178,14 +1199,9 @@ big_number_plot(
 
 ### Define Brand Colors as Variables
 
+::: {.fragment}
 ```{r}
-#| echo: true
-psc_blue <- "#15397F"
-psc_lightblue <- "#8DA4AE"
-psc_red <- "#9F3515"
-```
-
-```{r}
+#| fig-height: 4
 show_col(
   c(
     psc_blue,
@@ -1195,6 +1211,18 @@ show_col(
   borders = NA
 )
 ```
+:::
+
+
+::: {.fragment}
+```{r}
+#| echo: true
+psc_blue <- "#15397F"
+psc_lightblue <- "#8DA4AE"
+psc_red <- "#9F3515"
+```
+:::
+
 
 ---
 
@@ -1205,7 +1233,7 @@ show_col(
 ![](assets/total-population-plot.png)
 
 ```{r}
-comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
+comparison_plot <- function(df, highlight_town, value_type, highlight_color) {
   plot <-
     df |>
     ggplot(
@@ -1268,7 +1296,7 @@ comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
 ```{r}
 #| echo: true
 #| eval: false
-comparison_plot <- function(df, highlight_town, highlight_color, value_type) { }
+comparison_plot <- function(df, highlight_town, value_type, highlight_color) { }
 ```
 
 ---
@@ -1277,7 +1305,7 @@ comparison_plot <- function(df, highlight_town, highlight_color, value_type) { }
 #| echo: true
 #| eval: false
 #| code-line-numbers: "5"
-comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
+comparison_plot <- function(df, highlight_town, value_type, highlight_color) {
   geom_point(
     data = df |> filter(location == highlight_town),
     shape = 124,
@@ -1292,12 +1320,12 @@ comparison_plot <- function(df, highlight_town, highlight_color, value_type) {
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "4"
+#| code-line-numbers: "5"
 comparison_plot(
   df = single_family_homes,
   highlight_town = "Hartford",
-  highlight_color = psc_blue,
-  value_type = "percent"
+  value_type = "percent",
+  highlight_color = psc_blue
 )
 ```
 
@@ -1308,8 +1336,8 @@ comparison_plot(
 comparison_plot(
   df = single_family_homes,
   highlight_town = "Hartford",
-  highlight_color = psc_blue,
-  value_type = "percent"
+  value_type = "percent",
+  highlight_color = psc_blue
 )
 ```
 
@@ -1318,12 +1346,12 @@ comparison_plot(
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "4"
+#| code-line-numbers: "5"
 comparison_plot(
   df = total_population,
   highlight_town = "Hartford",
-  highlight_color = psc_red,
-  value_type = "number"
+  value_type = "number",
+  highlight_color = psc_red
 )
 ```
 
@@ -1334,8 +1362,8 @@ comparison_plot(
 comparison_plot(
   df = total_population,
   highlight_town = "Hartford",
-  highlight_color = psc_red,
-  value_type = "number"
+  value_type = "number",
+  highlight_color = psc_red
 )
 ```
 
@@ -1665,12 +1693,47 @@ Tell people to do the same with a table template
 :::
 
 
-# Conclusion
+# Report Design is Just a Set of Small Tweaks {.inverse}
 
-1. Don't use defaults
+---
 
-1. Be consistent
+::: {.large}
+1. Identify brand **colors and fonts**
 
-::: {.notes}
-TODO: Somehow return to beginning with OCF reports
+1. Use typst to create a simple **layout** with your brand colors and fonts
+
+1. Create functions to make **plots**, using brand colors and fonts to make them consistent
 :::
+
+# {background-image="assets/ecstatic.jpg" .inverse}
+
+---
+
+```{r}
+#| eval: false
+qr_code("https://rfor.us/posit2024slides") |>
+  generate_svg("assets/qrcode-slides.svg",
+               background = "transparent",
+               show = FALSE)
+
+qr_code("https://rfor.us/posit2024repo") |>
+  generate_svg("assets/qrcode-repo.svg",
+               background = "transparent",
+               show = FALSE)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](assets/qrcode-slides.svg){fig-align="center" fig-height="300px"}
+
+[rfor.us/posit2024slides](https://rfor.us/posit2024slides)
+:::
+
+::: {.column width="50%"}
+![](assets/qrcode-repo.svg){fig-align="center" fig-height="300px"}
+
+[rfor.us/posit2024repo](https://rfor.us/posit2024repo)
+:::
+
+::::
