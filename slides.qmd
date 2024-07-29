@@ -65,11 +65,7 @@ library(qrcode)
 
 ---
 
-## Work With a Designer {background-image="assets/road-split-right.jpg" .inverse}
-
-::: {.notes}
-But the second option isn't reproducible
-:::
+## Work With Other Tools {background-image="assets/road-split-right.jpg" .inverse}
 
 ---
 
@@ -84,14 +80,14 @@ But the second option isn't reproducible
 
 
 
-# {background-image="assets/psc-sample-only-two-pages.png" background-size="contain"}
+# {background-image="assets/psc-sample-only-two-pages.png" background-position="top"}
 
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
 # {background-image="assets/david-wedding.jpg" .inverse}
 
-::: {.absolute top=-200 style="font-size: 48px;"}
+::: {.absolute top=-200 style="font-size: 46px;"}
 \* Results not guaranteed 
 :::
 
@@ -125,13 +121,22 @@ But design is a skill that can be taught and R users already have many of the sk
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse .center}
 
----
 
-## {.center .xl}
+## {.xl .center}
 
-1. **Don't**: Use defaults
+**Don't**
 
-1. **Do**: Be consistent
+. . .
+
+Use defaults
+
+. . .
+
+**Do**
+
+. . .
+
+Be consistent
 
 ---
 
