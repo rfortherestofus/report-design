@@ -362,6 +362,29 @@ Whereas disregard and contempt for human rights have resulted
 
 ```{markdown}
 #| echo: true
+#| code-line-numbers: "2,10-11"
+---
+title: "Housing Data Profiles"
+
+format: 
+  typst:
+    template-partials:
+      - typst-show.typ
+      - typst-template.typ
+
+params:
+  town: "Hartford"
+---
+
+# Introduction
+
+Consequat occaecat mollit velit aliquip. Sunt Lorem ...
+```
+
+## report.qmd
+
+```{markdown}
+#| echo: true
 #| code-line-numbers: "4-8"
 ---
 title: "Housing Data Profiles"
@@ -378,7 +401,7 @@ params:
 
 # Introduction
 
-Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad ...
+Consequat occaecat mollit velit aliquip. Sunt Lorem ...
 ```
 
 ## typst-show.typ
@@ -478,11 +501,11 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad ...
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="30%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="65%"}
+::: {.column width="70%"}
 <br>
 ```{typst}
 #| echo: true
@@ -502,11 +525,11 @@ set text(
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="30%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="65%"}
+::: {.column width="70%"}
 <br>
 ```{typst}
 #| echo: true
@@ -526,11 +549,11 @@ set page(
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="30%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="65%"}
+::: {.column width="70%"}
 <br>
 ```{typst}
 #| echo: true
@@ -549,11 +572,11 @@ background:
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="30%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="65%"}
+::: {.column width="70%"}
 <br>
 ```{typst}
 #| echo: true
@@ -583,11 +606,12 @@ header: align(
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="30%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="65%"}
+::: {.column width="70%"}
+<br>
 ```{typst}
 #| echo: true
 #| eval: false
