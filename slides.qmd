@@ -35,11 +35,17 @@ library(tidyverse)
 library(scales)
 library(patchwork)
 library(qrcode)
+library(janitor)
+library(sf)
 ```
 
 
 
 # {background-image="assets/ocf-building.jpg" .inverse}
+
+::: {.notes}
+Mention that I will have link to slides and repo at end
+:::
 
 # {background-image="assets/david-kid.jpg" .inverse}
 
@@ -76,11 +82,67 @@ library(qrcode)
 **Make Beautiful Reports in R**
 :::
 
-. . .
-
 
 
 # {background-image="assets/psc-sample-only-two-pages.png" background-position="top"}
+
+---
+
+```{r}
+#| eval: false
+renderthis::to_gif(
+  from = "assets/hartford-report.pdf",
+  to = "assets/hartford-report.gif",
+  complex_slides = TRUE,
+  delay = 10
+)
+
+renderthis::to_gif(
+  from = "assets/bridgeport-report.pdf",
+  to = "assets/bridgeport-report.gif",
+  complex_slides = TRUE,
+  delay = 10
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](assets/hartford-report.gif){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](assets/bridgeport-report.gif){fig-align="center"}
+:::
+
+::::
+
+
+
+---
+
+```{r}
+ct_towns <-
+  st_read(
+    here::here("data/shp/shp_town.shp"),
+    quiet = TRUE
+  ) |>
+  clean_names() |>
+  filter(name != "County subdivisions not defined") |>
+  mutate(north_position = parse_number(intptlat)) |>
+  arrange(north_position) |>
+  mutate(town_number = row_number())
+
+ct_towns |>
+  ggplot() +
+  geom_sf(color = "white") +
+  geom_sf_text(
+    aes(label = town_number),
+    size = 2.5,
+    family = "Inter"
+  ) +
+  theme_void()
+```
 
 
 # {background-image="assets/david-wedding.jpg" .inverse}
@@ -117,6 +179,8 @@ Putting effort into your charts shows respect for your audience, **which means t
 
 ::: {.notes}
 But design is a skill that can be taught and R users already have many of the skills needed to do good design
+
+I'm not a designer either
 :::
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse .center}
@@ -224,6 +288,10 @@ show_col(
 
 ## Identify Brand Fonts {.inverse}
 
+::: {.notes}
+Talk about how to identify fonts on websites
+:::
+
 ## Don't Have Brand Fonts? {.center .center-slide}
 
 ---
@@ -310,7 +378,7 @@ params:
 
 # Introduction
 
-Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do ...
+Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad ...
 ```
 
 ## typst-show.typ
@@ -410,11 +478,11 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem cupidatat ad adipisicing do 
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 <br>
 ```{typst}
 #| echo: true
@@ -434,11 +502,11 @@ set text(
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 <br>
 ```{typst}
 #| echo: true
@@ -458,11 +526,11 @@ set page(
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 <br>
 ```{typst}
 #| echo: true
@@ -481,11 +549,11 @@ background:
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 <br>
 ```{typst}
 #| echo: true
@@ -515,12 +583,11 @@ header: align(
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="50%"}
-<br>
+::: {.column width="65%"}
 ```{typst}
 #| echo: true
 #| eval: false
@@ -814,7 +881,12 @@ comparison_plot(
 ```{r}
 #| echo: true
 #| eval: false
-comparison_plot <- function(df, highlight_town, value_type) { }
+#| code-line-numbers: "4"
+comparison_plot <- function(
+  df,
+  highlight_town,
+  value_type
+) { }
 ```
 
 ---
@@ -1084,31 +1156,22 @@ big_number_plot <- function(value, text) {
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "15-24"
+#| code-line-numbers: "5-15"
 big_number_plot <- function(value, text) {
   ggplot() +
     # Add value
-    geom_text(
-      aes(
-        x = 1,
-        y = 1,
-        label = value
-      ),
-      fontface = "bold",
-      size = 20,
-      hjust = 0
-    ) +
-    # Add text
-    geom_text(
-      aes(
-        x = 1,
-        y = 2,
-        label = str_to_upper(text)
-      ),
-      color = "gray70",
-      size = 7,
-      hjust = 0
-    ) +
+    ...
+  # Add text
+  geom_text(
+    aes(
+      x = 1,
+      y = 2,
+      label = str_to_upper(text)
+    ),
+    color = "gray70",
+    size = 7,
+    hjust = 0
+  ) +
     theme_void()
 }
 ```
@@ -1117,32 +1180,14 @@ big_number_plot <- function(value, text) {
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "25"
+#| code-line-numbers: "7"
 big_number_plot <- function(value, text) {
   ggplot() +
     # Add value
-    geom_text(
-      aes(
-        x = 1,
-        y = 1,
-        label = value
-      ),
-      fontface = "bold",
-      size = 20,
-      hjust = 0
-    ) +
-    # Add text
-    geom_text(
-      aes(
-        x = 1,
-        y = 2,
-        label = str_to_upper(text)
-      ),
-      color = "gray70",
-      size = 7,
-      hjust = 0
-    ) +
-    theme_void()
+    ...
+  # Add text
+  ...
+  theme_void()
 }
 ```
 
@@ -1301,7 +1346,13 @@ comparison_plot <- function(df, highlight_town, value_type, highlight_color) {
 ```{r}
 #| echo: true
 #| eval: false
-comparison_plot <- function(df, highlight_town, value_type, highlight_color) { }
+#| code-line-numbers: "5"
+comparison_plot <- function(
+  df,
+  highlight_town,
+  value_type,
+  highlight_color
+) { }
 ```
 
 ---
@@ -1309,8 +1360,13 @@ comparison_plot <- function(df, highlight_town, value_type, highlight_color) { }
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "5"
-comparison_plot <- function(df, highlight_town, value_type, highlight_color) {
+#| code-line-numbers: "5,10"
+comparison_plot <- function(
+  df,
+  highlight_town,
+  value_type,
+  highlight_color
+) {
   geom_point(
     data = df |> filter(location == highlight_town),
     shape = 124,
@@ -1384,15 +1440,24 @@ comparison_plot(
 
 ```{r}
 #| echo: true
-big_number_plot <- function(value, text, value_color) { }
+#| code-line-numbers: "4"
+big_number_plot <- function(
+  value,
+  text,
+  value_color
+) { }
 ```
 
 ---
 
 ```{r}
 #| echo: true
-#| code-line-numbers: "1,10"
-big_number_plot <- function(value, text, value_color) {
+#| code-line-numbers: "4,14"
+big_number_plot <- function(
+  value,
+  text,
+  value_color
+) {
   ggplot() +
     # Add value
     geom_text(
@@ -1406,17 +1471,7 @@ big_number_plot <- function(value, text, value_color) {
       size = 20,
       hjust = 0
     ) +
-    # Add text
-    geom_text(
-      aes(
-        x = 1,
-        y = 2,
-        label = str_to_upper(text)
-      ),
-      size = 7,
-      hjust = 0
-    ) +
-    theme_void()
+    ...
 }
 ```
 
@@ -1476,7 +1531,7 @@ big_number_plot(
 )
 ```
 
-. . .
+---
 
 ```{r}
 #| echo: true
@@ -1533,19 +1588,6 @@ theme_psc <- function() {
 
 
 ---
-
-```{r}
-#| echo: true
-#| eval: false
-comparison_plot(
-  df = total_population,
-  highlight_town = "Hartford",
-  highlight_color = psc_red,
-  value_type = "number"
-)
-```
-
-. . .
 
 ```{r}
 #| fig-height: 1.5
@@ -1710,6 +1752,10 @@ Tell people to do the same with a table template
 1. Create functions to make **plots**, using brand colors and fonts to make them consistent
 :::
 
+::: {.notes}
+Tie back to overall concepts (don't use defaults and be consistent)
+:::
+
 # {background-image="assets/ecstatic.jpg" .inverse}
 
 ---
@@ -1717,14 +1763,18 @@ Tell people to do the same with a table template
 ```{r}
 #| eval: false
 qr_code("https://rfor.us/posit2024slides") |>
-  generate_svg("assets/qrcode-slides.svg",
-               background = "transparent",
-               show = FALSE)
+  generate_svg(
+    "assets/qrcode-slides.svg",
+    background = "transparent",
+    show = FALSE
+  )
 
 qr_code("https://rfor.us/posit2024repo") |>
-  generate_svg("assets/qrcode-repo.svg",
-               background = "transparent",
-               show = FALSE)
+  generate_svg(
+    "assets/qrcode-repo.svg",
+    background = "transparent",
+    show = FALSE
+  )
 ```
 
 :::: {.columns}
