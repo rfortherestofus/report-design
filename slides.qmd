@@ -188,19 +188,21 @@ I'm not a designer either
 
 ## {.xl .center}
 
+**Do**
+
+. . .
+
+Be consistent
+
+. . .
+
 **Don't**
 
 . . .
 
 Use defaults
 
-. . .
 
-**Do**
-
-. . .
-
-Be consistent
 
 ---
 
@@ -239,18 +241,6 @@ Be consistent
 
 ## PDFs (sorry) {background-image="assets/who-runs-the-world.gif" .inverse .center}
 
-## typst {.inverse .center}
-
-```{r}
-#| eval: false
-quarto::quarto_render("report.qmd")
-
-renderthis::to_png(
-  from = "report.pdf",
-  to = "assets/typst-report.png"
-)
-```
-
 ---
 
 ![](assets/typst-report.png){height=700px fig-align="center"}
@@ -271,7 +261,6 @@ renderthis::to_png(
 ## {.center}
 ```{r}
 psc_blue <- "#15397F"
-psc_lightblue <- "#8DA4AE"
 psc_red <- "#9F3515"
 ```
 
@@ -279,7 +268,6 @@ psc_red <- "#9F3515"
 show_col(
   c(
     psc_blue,
-    psc_lightblue,
     psc_red
   ),
   borders = NA
@@ -324,7 +312,17 @@ Whereas disregard and contempt for human rights have resulted
 Whereas disregard and contempt for human rights have resulted
 :::
 
----
+## typst {.inverse .center}
+
+```{r}
+#| eval: false
+quarto::quarto_render("report.qmd")
+
+renderthis::to_png(
+  from = "report.pdf",
+  to = "assets/typst-report.png"
+)
+```
 
 ## {.center}
 
@@ -918,20 +916,6 @@ comparison_plot <- function(
 ```{r}
 #| echo: true
 #| eval: false
-#| code-line-numbers: "2-5"
-comparison_plot <- function(df, highlight_town, value_type) {
-  plot <-
-    df |>
-    ggplot() +
-    ...
-}
-```
-
----
-
-```{r}
-#| echo: true
-#| eval: false
 #| code-line-numbers: "7-12"
 comparison_plot <- function(df, highlight_town, value_type) {
   plot <-
@@ -1209,8 +1193,8 @@ big_number_plot <- function(value, text) {
   ggplot() +
     # Add value
     ...
-  # Add text
-  ...
+    # Add text
+    ...
   theme_void()
 }
 ```
@@ -1279,7 +1263,6 @@ big_number_plot(
 show_col(
   c(
     psc_blue,
-    psc_lightblue,
     psc_red
   ),
   borders = NA
@@ -1292,7 +1275,6 @@ show_col(
 ```{r}
 #| echo: true
 psc_blue <- "#15397F"
-psc_lightblue <- "#8DA4AE"
 psc_red <- "#9F3515"
 ```
 :::
@@ -1804,15 +1786,23 @@ qr_code("https://rfor.us/posit2024repo") |>
 :::: {.columns}
 
 ::: {.column width="50%"}
+:::{.center-slide}
+**Slides*
+
 ![](assets/qrcode-slides.svg){fig-align="center" fig-height="300px"}
 
 [rfor.us/posit2024slides](https://rfor.us/posit2024slides)
 :::
+:::
 
 ::: {.column width="50%"}
+:::{.center-slide}
+**GitHub Repo**
+
 ![](assets/qrcode-repo.svg){fig-align="center" fig-height="300px"}
 
 [rfor.us/posit2024repo](https://rfor.us/posit2024repo)
+:::
 :::
 
 ::::
