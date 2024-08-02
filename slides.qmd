@@ -1764,6 +1764,8 @@ Tie back to overall concepts (don't use defaults and be consistent)
 
 # {background-image="assets/ecstatic.jpg" .inverse}
 
+
+
 ---
 
 ```{r}
@@ -1781,28 +1783,55 @@ qr_code("https://rfor.us/posit2024repo") |>
     background = "transparent",
     show = FALSE
   )
+
+qr_code("rfor.us/consulting") |>
+  generate_svg(
+    "assets/qrcode-consulting.svg",
+    background = "transparent",
+    show = FALSE
+  )
 ```
+
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-:::{.center-slide}
-**Slides*
+**Slides**
 
-![](assets/qrcode-slides.svg){fig-align="center" fig-height="300px"}
-
-[rfor.us/posit2024slides](https://rfor.us/posit2024slides)
-:::
+[rfor.us/posit2024slides](https://rfor.us/posit2024slides){.small}
 :::
 
 ::: {.column width="50%"}
-:::{.center-slide}
-**GitHub Repo**
-
-![](assets/qrcode-repo.svg){fig-align="center" fig-height="300px"}
-
-[rfor.us/posit2024repo](https://rfor.us/posit2024repo)
-:::
+![](assets/qrcode-slides.svg){fig-align="center" height="175px"}
 :::
 
 ::::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**GitHub Repo**
+
+[rfor.us/posit2024repo](https://rfor.us/posit2024repo){.small}
+:::
+
+::: {.column width="50%"}
+![](assets/qrcode-repo.svg){fig-align="center" height="175px"}
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Report Examples**
+
+[rfor.us/consulting](rfor.us/consulting){.small}
+:::
+
+::: {.column width="50%"}
+![](assets/qrcode-consulting.svg){fig-align="center" height="175px"}
+:::
+
+::::
+
