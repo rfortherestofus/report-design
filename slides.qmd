@@ -43,10 +43,6 @@ library(sf)
 
 # {background-image="assets/ocf-building.jpg" .inverse}
 
-::: {.notes}
-Mention that I will have link to slides and repo at end
-:::
-
 # {background-image="assets/david-kid.jpg" .inverse}
 
 ::: {.notes}
@@ -61,19 +57,21 @@ Mention that I will have link to slides and repo at end
 
 # {background-image="assets/road-split.jpg" .inverse}
 
+
 ---
 
-## Make Ugly Reports {background-image="assets/road-split-left.jpg" .inverse}
+## Work With Other Tools {background-image="assets/road-split-left.jpg" .inverse}
+
+
+---
+
+## Make Ugly Reports {background-image="assets/road-split-right.jpg" .inverse}
 
 ---
 
 ![](assets/quarto-default-pdf.png){height=800px fig-align="center"}
 
----
-
-## Work With Other Tools {background-image="assets/road-split-right.jpg" .inverse}
-
----
+# {background-image="assets/road-split.jpg" .inverse}
 
 
 ## {background-image="assets/road-split-middle.jpg" .inverse}
@@ -85,38 +83,6 @@ Mention that I will have link to slides and repo at end
 
 
 # {background-image="assets/psc-sample-only-two-pages.png" background-position="top"}
-
----
-
-```{r}
-#| eval: false
-renderthis::to_gif(
-  from = "assets/hartford-report.pdf",
-  to = "assets/hartford-report.gif",
-  complex_slides = TRUE,
-  delay = 10
-)
-
-renderthis::to_gif(
-  from = "assets/bridgeport-report.pdf",
-  to = "assets/bridgeport-report.gif",
-  complex_slides = TRUE,
-  delay = 10
-)
-```
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![](assets/hartford-report.gif){fig-align="center"}
-:::
-
-::: {.column width="50%"}
-![](assets/bridgeport-report.gif){fig-align="center"}
-:::
-
-::::
-
 
 
 ---
@@ -185,22 +151,17 @@ I'm not a designer either
 
 # Good Design is Just a Few Small Tweaks {background-image="assets/tweaks2.jpg" .inverse .center}
 
+---
 
-## {.xl .center}
-
-**Do**
-
-. . .
-
-Be consistent
+## Framework for Good Design
 
 . . .
 
-**Don't**
+:::{.large}
+- **Do**: Be consistent
 
-. . .
-
-Use defaults
+- **Don't**: Use defaults
+:::
 
 
 
@@ -210,36 +171,32 @@ Use defaults
 
 ---
 
-### Create a Layout {.hidden}
+### Create a Layout {.center-slide}
 
 
-![](assets/psc-report-layout.png){height=700px fig-align="center"}
-
----
-
-### Add Brand Colors {.hidden}
-
-
-![](assets/psc-report-color.png){height=700px fig-align="center"}
+![](assets/psc-report-layout.png){height=650px fig-align="center"}
 
 ---
 
-### Add Brand Fonts {.hidden}
+### Add Brand Colors {.center-slide}
 
-![](assets/psc-report-font.png){height=700px fig-align="center"}
+
+![](assets/psc-report-color.png){height=650px fig-align="center"}
 
 ---
 
-### Add Plots {.hidden}
+### Add Brand Fonts {.center-slide}
 
-![](assets/psc-report-plots.png){height=700px fig-align="center"}
+![](assets/psc-report-font.png){height=650px fig-align="center"}
+
+---
+
+### Add Plots {.center-slide}
+
+![](assets/psc-report-plots.png){height=650px fig-align="center"}
 
 
-# Create a Layout {.inverse}
 
-## {background-image="assets/who-runs-the-world.gif" .inverse}
-
-## PDFs (sorry) {background-image="assets/who-runs-the-world.gif" .inverse .center}
 
 ---
 
@@ -280,42 +237,12 @@ show_col(
 Talk about how to identify fonts on websites
 :::
 
-## Don't Have Brand Fonts? {.center .center-slide}
-
----
-
-**Inter**
-
-Whereas disregard and contempt for human rights have resulted
-
-. . .
-
-<br>
-
-:::{.atkinson-hyperlegible-bold}
-**Atkinson Hyperlegible**
-:::
-
-:::{.atkinson-hyperlegible-regular}
-Whereas disregard and contempt for human rights have resulted
-:::
-
-. . .
-
-<br>
-
-:::{.instrument-sans-bold}
-**Instrument Sans**
-:::
-
-:::{.instrument-sans-regular}
-Whereas disregard and contempt for human rights have resulted
-:::
+# Create a Layout {.inverse}
 
 ## typst {.inverse .center}
 
 ```{r}
-#| eval: false
+#| eval: true
 quarto::quarto_render("report.qmd")
 
 renderthis::to_png(
@@ -378,6 +305,10 @@ params:
 
 Consequat occaecat mollit velit aliquip. Sunt Lorem ...
 ```
+
+::: {.notes}
+Mention that I will have link to slides and repo at end
+:::
 
 ## report.qmd
 
@@ -499,18 +430,18 @@ Consequat occaecat mollit velit aliquip. Sunt Lorem ...
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="50%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="70%"}
+::: {.column width="50%"}
 <br>
 ```{typst}
 #| echo: true
 #| eval: false
 set text(
   font: "Open Sans",
-  size: 11pt,
+  size: 12pt,
 )
 ```
 :::
@@ -523,11 +454,11 @@ set text(
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="50%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="70%"}
+::: {.column width="50%"}
 <br>
 ```{typst}
 #| echo: true
@@ -547,11 +478,11 @@ set page(
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="38%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="70%"}
+::: {.column width="62%"}
 <br>
 ```{typst}
 #| echo: true
@@ -570,11 +501,11 @@ background:
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="43%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="70%"}
+::: {.column width="57%"}
 <br>
 ```{typst}
 #| echo: true
@@ -604,11 +535,11 @@ header: align(
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="31%"}
 ![](assets/typst-report.png)
 :::
 
-::: {.column width="70%"}
+::: {.column width="69%"}
 <br>
 ```{typst}
 #| echo: true
@@ -618,7 +549,7 @@ footer: align(
     columns: (40%, 60%),
     align(horizon, 
           text(fill: rgb("15397F"), 
-          size: 10pt, 
+          size: 12pt, 
           counter(page).display("1"))),
     align(right, 
           image("assets/psclogo.svg", 
@@ -720,7 +651,10 @@ comparison_plot <- function(df, highlight_town) {
 ```{r}
 #| echo: true
 #| eval: false
-comparison_plot <- function(df, highlight_town) { }
+comparison_plot <- function(
+  df,
+  highlight_town
+) { }
 ```
 
 ---
@@ -784,7 +718,7 @@ comparison_plot <- function(df, highlight_town) {
       shape = 124,
       color = "gray80"
     ) +
-    # Dark gray line for town to highlight
+    # Line for town to highlight
     geom_point(
       data = df |> filter(location == highlight_town),
       shape = 124,
@@ -963,36 +897,6 @@ comparison_plot <- function(df, highlight_town, value_type) {
 ---
 
 ```{r}
-#| echo: true
-#| eval: false
-#| code-line-numbers: "21"
-comparison_plot <- function(df, highlight_town, value_type) {
-  plot <-
-    df |>
-    ggplot() +
-    ...
-
-  if (value_type == "percent") {
-    final_plot <- plot +
-      scale_x_continuous(
-        labels = percent_format(accuracy = 1)
-      )
-  }
-
-  if (value_type == "number") {
-    final_plot <- plot +
-      scale_x_continuous(
-        labels = comma_format(accuracy = 1)
-      )
-  }
-
-  final_plot
-}
-```
-
----
-
-```{r}
 comparison_plot <- function(df, highlight_town, value_type) {
   plot <-
     df |>
@@ -1081,17 +985,15 @@ total_population <-
 ```
 
 ```{r}
-#| echo: true
 #| eval: false
 total_population
 ```
 
 ```{r}
+#| eval: false
 total_population |>
   print(n = Inf)
 ```
-
----
 
 ```{r}
 #| echo: true
@@ -1135,7 +1037,10 @@ total_population <-
 
 ```{r}
 #| echo: true
-big_number_plot <- function(value, text) { }
+big_number_plot <- function(
+  value,
+  text
+) { }
 ```
 
 ---
@@ -1167,8 +1072,8 @@ big_number_plot <- function(value, text) {
 #| code-line-numbers: "5-15"
 big_number_plot <- function(value, text) {
   ggplot() +
-    # Add value
-    ...
+  # Add value
+  ...
   # Add text
   geom_text(
     aes(
@@ -1191,10 +1096,10 @@ big_number_plot <- function(value, text) {
 #| code-line-numbers: "7"
 big_number_plot <- function(value, text) {
   ggplot() +
-    # Add value
-    ...
-    # Add text
-    ...
+  # Add value
+  ...
+  # Add text
+  ...
   theme_void()
 }
 ```
@@ -1563,7 +1468,7 @@ big_number_plot(
 
 # Use Brand Fonts in Plots {.inverse}
 
-## Make a Custom Theme
+## Make a Custom Theme {.inverse}
 
 ---
 
@@ -1572,9 +1477,7 @@ big_number_plot(
 #| eval: false
 theme_psc <- function() {
   theme_void(base_family = "Open Sans") +
-    theme(
-      ...
-    )
+    theme()
 }
 ```
 
@@ -1712,18 +1615,62 @@ big_number_plot <- function(value, text) {
 ---
 
 ```{r}
-#| fig-height: 1.75
-big_number_plot(
-  value = "122,549",
-  text = "Total Population",
-  value_color = psc_red
+#| echo: true
+#| eval: false
+#| code-line-numbers: "10,22"
+big_number_plot <- function(value, text) {
+  ggplot() +
+    # Add value
+    geom_text(
+      aes(
+        x = 1,
+        y = 1,
+        label = value
+      ),
+      family = "Open Sans",
+      fontface = "bold",
+      size = 20,
+      hjust = 0
+    ) +
+    # Add text
+    geom_text(
+      aes(
+        x = 1,
+        y = 2,
+        label = str_to_upper(text)
+      ),
+      family = "Open Sans",
+      color = "gray70",
+      size = 7,
+      hjust = 0
+    ) +
+    ...
+}
+```
+
+---
+
+```{r}
+#| echo: true
+#| eval: false
+update_geom_defaults(
+  geom = "text",
+  aes(family = "Open Sans")
 )
 ```
 
 . . .
 
 ```{r}
-#| echo: true
+#| fig-height: 1.75
+big_number_plot(
+  value = "122,549",
+  text = "Total Population",
+  value_color = psc_red
+) 
+```
+
+```{r}
 update_geom_defaults(
   geom = "text",
   aes(family = "Open Sans")
@@ -1745,21 +1692,29 @@ big_number_plot(
 Tell people to do the same with a table template
 :::
 
+# {background-image="assets/psc-sample-only-two-pages.png" background-position="top"}
 
-# Report Design is Just a Set of Small Tweaks {.inverse}
+
+# Good Design is Just a Set of Small Tweaks {.inverse}
 
 ---
 
 ::: {.large}
 1. Identify brand **colors and fonts**
 
-1. Use typst to create a simple **layout** with your brand colors and fonts
+1. Use typst to create a **layout**
 
-1. Create functions to make **plots**, using brand colors and fonts to make them consistent
+1. Create functions to make consistent **plots** 
 :::
 
-::: {.notes}
-Tie back to overall concepts (don't use defaults and be consistent)
+---
+
+:::{.xl}
+**Do**: Be consistent
+:::
+
+:::{.xl}
+**Don't**: Use defaults
 :::
 
 # {background-image="assets/ecstatic.jpg" .inverse}
@@ -1834,4 +1789,3 @@ qr_code("rfor.us/consulting") |>
 :::
 
 ::::
-
