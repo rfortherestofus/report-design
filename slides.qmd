@@ -1692,30 +1692,39 @@ big_number_plot(
 Tell people to do the same with a table template
 :::
 
+---
+
+. . .
+
+````{markdown}
+#| echo: true
+#| eval: false
+---
+title: "Housing Data Profiles"
+---
+
+```{r}  
+psc_blue <- "#15397F"
+psc_red <- "#9F3515"
+```
+
+```{r}
+update_geom_defaults()
+```
+
+
+```{r}
+big_number_plot()
+```
+
+```{r}
+comparison_plot()
+```
+
+````
+
 # {background-image="assets/psc-sample-only-two-pages.png" background-position="top"}
 
-
-# Good Design is Just a Set of Small Tweaks {.inverse}
-
----
-
-::: {.large}
-1. Identify brand **colors and fonts**
-
-1. Use typst to create a **layout**
-
-1. Create functions to make consistent **plots** 
-:::
-
----
-
-:::{.xl}
-**Do**: Be consistent
-:::
-
-:::{.xl}
-**Don't**: Use defaults
-:::
 
 # {background-image="assets/ecstatic.jpg" .inverse}
 
