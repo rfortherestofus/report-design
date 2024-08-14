@@ -1749,7 +1749,7 @@ qr_code("https://rfor.us/posit2024repo") |>
     show = FALSE
   )
 
-qr_code("rfor.us/consulting") |>
+qr_code("https://rfor.us/consulting") |>
   generate_svg(
     "assets/qrcode-consulting.svg",
     background = "transparent",
@@ -1791,7 +1791,7 @@ qr_code("rfor.us/consulting") |>
 ::: {.column width="50%"}
 **Report Examples**
 
-[rfor.us/consulting](rfor.us/consulting){.small}
+[rfor.us/consulting](https://rfor.us/consulting){.small}
 :::
 
 ::: {.column width="50%"}
