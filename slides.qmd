@@ -69,7 +69,7 @@ library(sf)
 
 ---
 
-![](assets/quarto-default-pdf.png){height=800px fig-align="center"}
+![](assets/quarto-default-pdf.png){height=700px fig-align="center"}
 
 # {background-image="assets/road-split.jpg" .inverse}
 
@@ -242,7 +242,7 @@ Talk about how to identify fonts on websites
 ## typst {.inverse .center}
 
 ```{r}
-#| eval: true
+#| eval: false
 quarto::quarto_render("report.qmd")
 
 renderthis::to_png(
@@ -1701,6 +1701,7 @@ Tell people to do the same with a table template
 #| eval: false
 ---
 title: "Housing Data Profiles"
+format: typst
 ---
 
 ```{r}  
