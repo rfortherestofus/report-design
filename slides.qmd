@@ -155,8 +155,6 @@ I'm not a designer either
 
 ## Framework for Good Design
 
-. . .
-
 :::{.large}
 - **Do**: Be consistent
 
